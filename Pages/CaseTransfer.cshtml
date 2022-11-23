@@ -15,20 +15,20 @@
         <input type="text" asp-for="NewSR.number" class="mr-5">
 
         <label asp-for="NewSR.IsFQRdone" >FQR</label>
-        <select asp-for="NewSR.POD" asp-items="Html.GetEnumSelectList<IsFQRdone>()" class="mr-5"></select><br>
+        <select asp-for="NewSR.POD" asp-items="Html.GetEnumSelectList<IsFQRdone>()" class="mr-5"></select>
         
 
         <label asp-for="NewSR.Issue">Issue</label>
         <input type="text" asp-for="NewSR.Issue" class="mr-5">
         
         <label asp-for="NewSR.POD">POD</label>
-        <select asp-for="NewSR.POD" asp-items="Html.GetEnumSelectList<POD>()" class="mr-5"></select><br>
+        <select asp-for="NewSR.POD" asp-items="Html.GetEnumSelectList<POD>()" class="mr-5"></select>
         
         <label asp-for="NewSR.Age"></label>
-        <input type="text" asp-for="NewSR.Age" class="mr-5">
+        <input type="text" asp-for="NewSR.Age" class="mr-5" size="4">
 
-        <label asp-for="NewSR.IsSMEReviewed">SME Review</label>
-        <input type="text" asp-for="NewSR.IsSMEReviewed" class="mr-5">
+        <label asp-for="NewSR.IsSMEReviewed">SME/TL Review</label>
+        <input type="text" asp-for="NewSR.IsSMEReviewed" class="mr-5", size="4">
 
         <button class="btn btn-primary">Add</button>
     </div>
@@ -48,7 +48,7 @@
     {
         <tr>
             <td>@sr.number</td>
-            <td>@Model.IsFQR(sr)</td>
+            <td>@sr.IsFQRdone</td>
             <td>@sr.Issue</td>
             <td>@sr.POD</td> 
             <td>@sr.Age</td>                       
