@@ -9,45 +9,45 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyWebApp
 build_property.RootNamespace = MyWebApp
-build_property.ProjectDir = C:\Users\abpanick\Documents\GitHub\MyWebApp\
+build_property.ProjectDir = c:\Users\abpanick\Documents\GitHub\MyWebApp\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\abpanick\Documents\GitHub\MyWebApp
+build_property.MSBuildProjectDirectory = c:\Users\abpanick\Documents\GitHub\MyWebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/CaseTransfer.cshtml]
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/CaseTransfer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzZVRyYW5zZmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Error.cshtml]
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/ICM Approvals.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSUNNIEFwcHJvdmFscy5jc2h0bWw=
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/ICMApprovals.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSUNNQXBwcm92YWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Index.cshtml]
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Pizza.cshtml]
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Pizza.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/_ViewImports.cshtml]
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/_ViewStart.cshtml]
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Shared/_Layout.cshtml]
+[c:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-529uds4zl5
