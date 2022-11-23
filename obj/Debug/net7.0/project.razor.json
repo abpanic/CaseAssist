@@ -16565,6 +16565,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\abpanick\\Documents\\GitHub\\MyWebApp\\Pages\\ICM Approvals.cshtml",
+      "TargetPath": "Pages\\ICM Approvals.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\abpanick\\Documents\\GitHub\\MyWebApp\\Pages\\Shared\\_Layout.cshtml",
       "TargetPath": "Pages\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -16587,11 +16592,6 @@
     {
       "FilePath": "c:\\Users\\abpanick\\Documents\\GitHub\\MyWebApp\\Pages\\Error.cshtml",
       "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\abpanick\\Documents\\GitHub\\MyWebApp\\Pages\\Privacy.cshtml",
-      "TargetPath": "Pages\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
