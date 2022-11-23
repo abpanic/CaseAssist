@@ -20,7 +20,6 @@ public class SR
 
 }
 public enum POD{PowerApps, Clients, Apps, Platform}
-
-    //public enum Issue{PowerApps, Clients, Apps, Platform}
+public enum IsFQRdone{True, False}
 
     //Id,number, Issue, FQR, POD, Age, SMEed
