@@ -16560,11 +16560,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\abpanick\\Documents\\GitHub\\MyWebApp\\Pages\\Pizza.cshtml",
-      "TargetPath": "Pages\\Pizza.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\abpanick\\Documents\\GitHub\\MyWebApp\\Pages\\ICMApprovals.cshtml",
       "TargetPath": "Pages\\ICMApprovals.cshtml",
       "FileKind": "mvc"
@@ -16592,6 +16587,11 @@
     {
       "FilePath": "c:\\Users\\abpanick\\Documents\\GitHub\\MyWebApp\\Pages\\Error.cshtml",
       "TargetPath": "Pages\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\abpanick\\Documents\\GitHub\\MyWebApp\\Pages\\Learning.cshtml",
+      "TargetPath": "Pages\\Learning.cshtml",
       "FileKind": "mvc"
     },
     {

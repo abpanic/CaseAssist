@@ -19,10 +19,6 @@ namespace Transfer.Pages
             SRs=TransferService.GetAll();
         }
 
-        public string IsFQR(SR SR)
-        {
-            return SR.IsFQRdone ? "FQR Done": "FQR Not Done";
-        }
 
         public string IsSMEed(SR SR)
         {

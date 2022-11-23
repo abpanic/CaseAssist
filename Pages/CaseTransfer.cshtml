@@ -14,8 +14,9 @@
         <label asp-for="NewSR.number">Case</label>
         <input type="text" asp-for="NewSR.number" class="mr-5">
 
-        <label asp-for="NewSR.IsFQRdone">FQR</label>
-        <input type="text" asp-for="NewSR.IsFQRdone" class="mr-5">
+        <label asp-for="NewSR.IsFQRdone" >FQR</label>
+        <select asp-for="NewSR.POD" asp-items="Html.GetEnumSelectList<IsFQRdone>()" class="mr-5"></select><br>
+        
 
         <label asp-for="NewSR.Issue">Issue</label>
         <input type="text" asp-for="NewSR.Issue" class="mr-5">
