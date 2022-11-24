@@ -28,7 +28,7 @@
         <input type="text" asp-for="NewSR.Age" class="mr-5" size="4">
 
         <label asp-for="NewSR.IsSMEReviewed">SME/TL Review</label>
-        <input type="text" asp-for="NewSR.IsSMEReviewed" class="mr-5", size="4">
+        <select asp-for="NewSR.POD" asp-items="Html.GetEnumSelectList<IsSME>()" class="mr-5"></select>
 
         <button class="btn btn-primary">Add</button>
     </div>
@@ -52,7 +52,7 @@
             <td>@sr.Issue</td>
             <td>@sr.POD</td> 
             <td>@sr.Age</td>                       
-            <td>@Model.IsSMEed(sr)</td>
+            <td>@sr.IsSMEReviewed</td>
             <td>
                 <form method="post" asp-page-handler="Delete" asp-route-id="@sr.Id">
                     <button class="btn btn-danger">Delete</button>

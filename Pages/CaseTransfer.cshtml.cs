@@ -20,10 +20,6 @@ namespace Transfer.Pages
         }
 
 
-        public string IsSMEed(SR SR)
-        {
-            return SR.IsSMEReviewed ? "SME Reviewed": "SME Not Reviewed";
-        }
     public IActionResult OnPost()
     {
         if (!ModelState.IsValid)
