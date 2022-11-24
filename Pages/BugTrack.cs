@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace mywebapp.Pages;
 
-public class PrivacyModel : PageModel
+public class BugTrack : PageModel
 {
     private readonly ILogger<PrivacyModel> _logger;
 

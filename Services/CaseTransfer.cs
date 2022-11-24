@@ -13,8 +13,8 @@ public static class TransferService
     {
         SRs=new List<SR>
         {
-            new SR{number=211234567, Issue="cannot login into org", IsFQRdone =true, POD =POD.PowerApps,Age = 67, IsSMEReviewed =true},
-            new SR{number=2118596034, Issue="configuring CRM client for outlook", IsFQRdone =true, POD =POD.Clients, Age = 4, IsSMEReviewed =true}
+            new SR{number=211234567, Issue="cannot login into org", IsFQRdone =true, POD =POD.PowerApps,Age = 67, IsSMEReviewed =IsSME.False},
+            new SR{number=2118596034, Issue="configuring CRM client for outlook", IsFQRdone =true, POD =POD.Clients, Age = 4, IsSMEReviewed =IsSME.False}
         };
     }
 
