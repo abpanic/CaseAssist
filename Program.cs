@@ -18,12 +18,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-           Path.Combine(builder.Environment.ContentRootPath, "Pages")),
-    RequestPath = new PathString ("/Pages")
-});
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
