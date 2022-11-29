@@ -1,0 +1,1319 @@
+<!doctype html>
+<html class="no-js" lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="x-dns-prefetch-control" content="on" />            
+<title>The Ultimate Guide to Procmon</title>
+
+<link id='omgf-preload-0' rel='preload' href='https://adamtheautomator.com/wp-content/uploads/omgf/google-fonts/poppins-normal-400.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-1' rel='preload' href='https://adamtheautomator.com/wp-content/uploads/omgf/google-fonts/poppins-normal-600.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-2' rel='preload' href='https://adamtheautomator.com/wp-content/uploads/omgf/google-fonts/poppins-normal-700.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-3' rel='preload' href='https://adamtheautomator.com/wp-content/uploads/omgf/google-fonts-css/poppins-normal-400.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-4' rel='preload' href='https://adamtheautomator.com/wp-content/uploads/omgf/google-fonts-css/poppins-normal-600.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-5' rel='preload' href='https://adamtheautomator.com/wp-content/uploads/omgf/google-fonts-css/poppins-normal-700.woff2' as='font' type='font/woff2' crossorigin />
+<link rel='stylesheet' id='wp-block-library-css' href='https://adamtheautomator.com/wp-includes/css/dist/block-library/style.min.css?ver=6.1.1' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='mediaelement-css' href='https://adamtheautomator.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css' href='https://adamtheautomator.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=6.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='novashare-css-css' href='https://adamtheautomator.com/wp-content/plugins/novashare/css/style.min.css?ver=1.3.4' type='text/css' media='all' />
+<link rel='stylesheet' id='classic-theme-styles-css' href='https://adamtheautomator.com/wp-includes/css/classic-themes.min.css?ver=1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="mkaz-code-syntax-prism-css" href="https://adamtheautomator.com/wp-content/plugins/code-syntax-block/assets/prism-a11y-dark.css?ver=1657131030" type="text/css" media="print" onload="this.media='all'" /><link rel='stylesheet' id='pwp-offline-style-css' href='https://adamtheautomator.com/wp-content/plugins/progressive-wp/assets/styles/ui-offline.css?ver=2.1.13' type='text/css' media='all' />
+<style id='wp-block-library-theme-inline-css' type='text/css'>
+.wp-block-audio figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio figcaption{color:hsla(0,0%,100%,.65)}.wp-block-audio{margin:0 0 1em}.wp-block-code{border:1px solid #ccc;border-radius:4px;font-family:Menlo,Consolas,monaco,monospace;padding:.8em 1em}.wp-block-embed figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed figcaption{color:hsla(0,0%,100%,.65)}.wp-block-embed{margin:0 0 1em}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:hsla(0,0%,100%,.65)}.wp-block-image figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-image figcaption{color:hsla(0,0%,100%,.65)}.wp-block-image{margin:0 0 1em}.wp-block-pullquote{border-top:4px solid;border-bottom:4px solid;margin-bottom:1.75em;color:currentColor}.wp-block-pullquote__citation,.wp-block-pullquote cite,.wp-block-pullquote footer{color:currentColor;text-transform:uppercase;font-size:.8125em;font-style:normal}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;position:relative;font-style:normal}.wp-block-quote.has-text-align-right{border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote.has-text-align-center{border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote.is-style-plain{border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-search__button{border:1px solid #ccc;padding:.375em .625em}:where(.wp-block-group.has-background){padding:1.25em 2.375em}.wp-block-separator.has-css-opacity{opacity:.4}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto}.wp-block-separator.has-alpha-channel-opacity{opacity:1}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table{margin:"0 0 1em 0"}.wp-block-table thead{border-bottom:3px solid}.wp-block-table tfoot{border-top:3px solid}.wp-block-table td,.wp-block-table th{word-break:normal}.wp-block-table figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video{margin:0 0 1em}.wp-block-template-part.has-background{padding:1.25em 2.375em;margin-top:0;margin-bottom:0}
+</style>
+<link rel='stylesheet' id='google-fonts-css' href='https://adamtheautomator.com/wp-content/uploads/omgf/google-fonts/google-fonts.css?ver=1647264412' type='text/css' media='all' />
+<link rel='stylesheet' id='production-css' href='https://adamtheautomator.com/wp-content/themes/adam-the-automator/assets/css/compiled/styles.min.css?ver=2022.11.23.201121' type='text/css' media='all' />
+
+
+
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-5013 single-format-standard wp-embed-responsive flex flex-col justify-center bg-slate-100 dark:bg-slate-800">
+
+
+</header>
+
+
+
+</div>
+          </div>
+    <article id="post-5013" class="max-w-screen-2xl w-full grid grid-cols-1 lg:grid-cols-[minmax(240px,300px)_1fr_minmax(224px,350px)] gap-2 1xl:gap-8 post-5013 post type-post status-publish format-standard has-post-thumbnail hentry category-it-ops tag-ultimate-guide wp-sticky">
+      <div class="justify-self-center w-full max-w-[75ch] pl-2 pr-2 mt-3 prose prose-slate dark:prose-invert dark:bg-slate-800 1xl:pl-2 2xl:pl-0 lg:pr-0">
+        <div id="ez-toc-container" class="ez-toc-v2_0_38 counter-hierarchy ez-toc-counter ez-toc-transparent ez-toc-container-direction">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">Table of Contents</p>
+<span class="ez-toc-title-toggle"></span></div>
+<nav><ul class='ez-toc-list ez-toc-list-level-1' ><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-1" href="#Prerequisites" title="Prerequisites">Prerequisites</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#Downloading_and_Running_Procmon" title="Downloading and Running Procmon">Downloading and Running Procmon</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-3" href="#The_Old-Fashioned_Way" title="The Old-Fashioned Way">The Old-Fashioned Way</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-4" href="#Sysinternals_Live" title="Sysinternals Live">Sysinternals Live</a></li></ul></li>
+<li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-5" href="#Customizing_Procmon_Start_Behavior" title="Customizing Procmon Start Behavior">Customizing Procmon Start Behavior</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-6" href="#Procmon_Intro" title="Procmon Intro">Procmon Intro</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-7" href="#Enabling_and_Disabling_Captures" title="Enabling and Disabling Captures">Enabling and Disabling Captures</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-8" href="#Event_Filters" title="Event Filters">Event Filters</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-9" href="#Viewing_Filters" title="Viewing Filters">Viewing Filters</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-10" href="#Managing_Event_Filter_Rules" title="Managing Event Filter Rules">Managing Event Filter Rules</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-11" href="#Using_the_Process_Monitor_Filter_Box" title="Using the Process Monitor Filter Box">Using the Process Monitor Filter Box</a><ul class='ez-toc-list-level-4'><li class='ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-12" href="#Adding_Event_Filters" title="Adding Event Filters">Adding Event Filters</a></li><li class='ez-toc-page-1 ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-13" href="#Removing_Event_Filter_Rules" title="Removing Event Filter Rules">Removing Event Filter Rules</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-14" href="#Adding_Filter_Rules_with_Right-Click" title="Adding Filter Rules with Right-Click">Adding Filter Rules with Right-Click</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-15" href="#Saving_and_Managing_Custom_Filters" title="Saving and Managing Custom Filters">Saving and Managing Custom Filters</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-16" href="#Importing_and_Exporting_Filters" title="Importing and Exporting Filters">Importing and Exporting Filters</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-17" href="#Importing_and_Exporting_Procmon_Configurations" title="Importing and Exporting Procmon Configurations">Importing and Exporting Procmon Configurations</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-18" href="#Highlighting_Events_and_Converting_to_Filters" title="Highlighting Events and Converting to Filters">Highlighting Events and Converting to Filters</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-19" href="#Exporting_and_Opening_Events_tofrom_Log_Files" title="Exporting and Opening Events to/from Log Files">Exporting and Opening Events to/from Log Files</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-20" href="#Saving_Events_to_a_Log_File" title="Saving Events to a Log File">Saving Events to a Log File</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-21" href="#Opening_Saved_Event_Logs" title="Opening Saved Event Logs">Opening Saved Event Logs</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-22" href="#Automatically_Logging_Events" title="Automatically Logging Events">Automatically Logging Events</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-23" href="#Storing_Events_on_Disk" title="Storing Events on Disk">Storing Events on Disk</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-24" href="#Converting_Log_Files" title="Converting Log Files">Converting Log Files</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-25" href="#Capturing_Boot-Time_Events" title="Capturing Boot-Time Events">Capturing Boot-Time Events</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-26" href="#Running_Procmon_Remotely" title="Running Procmon Remotely">Running Procmon Remotely</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-27" href="#Setting_up_Long-Running_Procmon_Captures" title="Setting up Long-Running Procmon Captures">Setting up Long-Running Procmon Captures</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-28" href="#Drop_Filtered_Events" title="Drop Filtered Events">Drop Filtered Events</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-29" href="#Advanced_Topics" title="Advanced Topics">Advanced Topics</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-30" href="#Filter_Drivers" title="Filter Drivers">Filter Drivers</a><ul class='ez-toc-list-level-4'><li class='ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-31" href="#Unloading_the_PROCMON24_Filter_Driver" title="Unloading the PROCMON24 Filter Driver">Unloading the PROCMON24 Filter Driver</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-32" href="#Stack_Traces" title="Stack Traces">Stack Traces</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-33" href="#Changing_Procmons_Altitude_Capturing_Lower-Level_Events" title="Changing Procmon&#8217;s Altitude (Capturing Lower-Level Events)">Changing Procmon&#8217;s Altitude (Capturing Lower-Level Events)</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-34" href="#Real-World_Examples" title="Real-World Examples">Real-World Examples</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-35" href="#Finding_Whats_Deleting_a_File" title="Finding What&#8217;s Deleting a File">Finding What&#8217;s Deleting a File</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-36" href="#Tracking_Down_Locked_File_Issues" title="Tracking Down Locked File Issues">Tracking Down Locked File Issues</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-37" href="#Troubleshooting_Applications_that_Require_Admin_Rights" title="Troubleshooting Applications that Require Admin Rights">Troubleshooting Applications that Require Admin Rights</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-38" href="#Finding_the_Process_Accessing_an_IP_Address" title="Finding the Process Accessing an IP Address">Finding the Process Accessing an IP Address</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-39" href="#Troubleshooting_Slow_Boot_Up" title="Troubleshooting Slow Boot Up">Troubleshooting Slow Boot Up</a></li>
+<li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-40" href="#Troubleshooting_App-V_Applications" title="Troubleshooting App-V Applications">Troubleshooting App-V Applications</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-41" href="#Wrap_Up" title="Wrap Up">Wrap Up</a></li></ul></nav>
+</div>
+      </div>
+      <div class="article__content prose prose-slate dark:prose-invert dark:bg-slate-800 pt-12 pb-6 lg:pb-12 break-words pr-2 pl-2 lg:pr-0 lg:pl-0 prose-code:after:content-[''] prose-code:before:content-[''] prose-code:bg-slate-300 dark:prose-code:bg-slate-700 dark:prose-code:text-white prose-code:px-1 prose-code:py-1 prose-code:rounded prose-img:mb-2 prose-figcaption:text-slate-600 dark:prose-figcaption:text-slate-400 prose-img:shadow-lg dark:prose-img:shadow-[0_10px_15px_-3px_rgb(0,0,0,1),0_4px_6px_-4px_rgb(0,0,0,1)] dark:prose-hr:border-slate-400 prose-hr:border-slate-600 lg:min-w-[55ch] max-w-[75ch]">
+
+                
+<p>Procmon. The infamous <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/procmon" target="_blank" rel="noopener">Windows Sysinternals&#8217; utility</a> to track down all kinds of Windows activity. Known for its ability to track down rogue software installers making unknown changes to registry keys or perhaps inspecting a virus&#8217; tracks.</p>
+
+
+
+<p>If you need to inspect Windows registry, file system, process, or network activity and have decided to use procmon, this article is for you.</p>
+
+
+
+<p>In this Ultimate Guide, you&#8217;re going to learn everything there is to know about using the procmon utility from installing, basic usage all the way to various use cases that will help you track down all kinds of activity.</p>
+
+
+
+<div id="ez-toc-container" class="ez-toc-v2_0_38 counter-hierarchy ez-toc-counter ez-toc-transparent ez-toc-container-direction">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">Table of Contents</p>
+<span class="ez-toc-title-toggle"></span></div>
+<nav><ul class='ez-toc-list ez-toc-list-level-1' ><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-1" href="#Prerequisites" title="Prerequisites">Prerequisites</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#Downloading_and_Running_Procmon" title="Downloading and Running Procmon">Downloading and Running Procmon</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-3" href="#The_Old-Fashioned_Way" title="The Old-Fashioned Way">The Old-Fashioned Way</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-4" href="#Sysinternals_Live" title="Sysinternals Live">Sysinternals Live</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-5" href="#Customizing_Procmon_Start_Behavior" title="Customizing Procmon Start Behavior">Customizing Procmon Start Behavior</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-6" href="#Procmon_Intro" title="Procmon Intro">Procmon Intro</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-7" href="#Enabling_and_Disabling_Captures" title="Enabling and Disabling Captures">Enabling and Disabling Captures</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-8" href="#Event_Filters" title="Event Filters">Event Filters</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-9" href="#Viewing_Filters" title="Viewing Filters">Viewing Filters</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-10" href="#Managing_Event_Filter_Rules" title="Managing Event Filter Rules">Managing Event Filter Rules</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-11" href="#Using_the_Process_Monitor_Filter_Box" title="Using the Process Monitor Filter Box">Using the Process Monitor Filter Box</a><ul class='ez-toc-list-level-4'><li class='ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-12" href="#Adding_Event_Filters" title="Adding Event Filters">Adding Event Filters</a></li><li class='ez-toc-page-1 ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-13" href="#Removing_Event_Filter_Rules" title="Removing Event Filter Rules">Removing Event Filter Rules</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-14" href="#Adding_Filter_Rules_with_Right-Click" title="Adding Filter Rules with Right-Click">Adding Filter Rules with Right-Click</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-15" href="#Saving_and_Managing_Custom_Filters" title="Saving and Managing Custom Filters">Saving and Managing Custom Filters</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-16" href="#Importing_and_Exporting_Filters" title="Importing and Exporting Filters">Importing and Exporting Filters</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-17" href="#Importing_and_Exporting_Procmon_Configurations" title="Importing and Exporting Procmon Configurations">Importing and Exporting Procmon Configurations</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-18" href="#Highlighting_Events_and_Converting_to_Filters" title="Highlighting Events and Converting to Filters">Highlighting Events and Converting to Filters</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-19" href="#Exporting_and_Opening_Events_tofrom_Log_Files" title="Exporting and Opening Events to/from Log Files">Exporting and Opening Events to/from Log Files</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-20" href="#Saving_Events_to_a_Log_File" title="Saving Events to a Log File">Saving Events to a Log File</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-21" href="#Opening_Saved_Event_Logs" title="Opening Saved Event Logs">Opening Saved Event Logs</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-22" href="#Automatically_Logging_Events" title="Automatically Logging Events">Automatically Logging Events</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-23" href="#Storing_Events_on_Disk" title="Storing Events on Disk">Storing Events on Disk</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-24" href="#Converting_Log_Files" title="Converting Log Files">Converting Log Files</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-25" href="#Capturing_Boot-Time_Events" title="Capturing Boot-Time Events">Capturing Boot-Time Events</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-26" href="#Running_Procmon_Remotely" title="Running Procmon Remotely">Running Procmon Remotely</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-27" href="#Setting_up_Long-Running_Procmon_Captures" title="Setting up Long-Running Procmon Captures">Setting up Long-Running Procmon Captures</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-28" href="#Drop_Filtered_Events" title="Drop Filtered Events">Drop Filtered Events</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-29" href="#Advanced_Topics" title="Advanced Topics">Advanced Topics</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-30" href="#Filter_Drivers" title="Filter Drivers">Filter Drivers</a><ul class='ez-toc-list-level-4'><li class='ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-31" href="#Unloading_the_PROCMON24_Filter_Driver" title="Unloading the PROCMON24 Filter Driver">Unloading the PROCMON24 Filter Driver</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-32" href="#Stack_Traces" title="Stack Traces">Stack Traces</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-33" href="#Changing_Procmons_Altitude_Capturing_Lower-Level_Events" title="Changing Procmon&#8217;s Altitude (Capturing Lower-Level Events)">Changing Procmon&#8217;s Altitude (Capturing Lower-Level Events)</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-34" href="#Real-World_Examples" title="Real-World Examples">Real-World Examples</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-35" href="#Finding_Whats_Deleting_a_File" title="Finding What&#8217;s Deleting a File">Finding What&#8217;s Deleting a File</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-36" href="#Tracking_Down_Locked_File_Issues" title="Tracking Down Locked File Issues">Tracking Down Locked File Issues</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-37" href="#Troubleshooting_Applications_that_Require_Admin_Rights" title="Troubleshooting Applications that Require Admin Rights">Troubleshooting Applications that Require Admin Rights</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-38" href="#Finding_the_Process_Accessing_an_IP_Address" title="Finding the Process Accessing an IP Address">Finding the Process Accessing an IP Address</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-39" href="#Troubleshooting_Slow_Boot_Up" title="Troubleshooting Slow Boot Up">Troubleshooting Slow Boot Up</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-40" href="#Troubleshooting_App-V_Applications" title="Troubleshooting App-V Applications">Troubleshooting App-V Applications</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-41" href="#Wrap_Up" title="Wrap Up">Wrap Up</a></li></ul></nav></div>
+<h2 id="h-prerequisites"><span class="ez-toc-section" id="Prerequisites"></span>Prerequisites<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>This Ultimate Guide will apply to nearly all Windows systems but, for the sake of completeness (and to prevent you from attempting to run procmon on a Windows 3.1 computer), you&#8217;ll need the following:</p>
+
+
+
+<ul><li>A Windows Vista or Windows Server 2008 or higher machine (x86 or x64)</li></ul>
+
+
+
+<p>That&#8217;s it! You&#8217;ll download and install procmon in the following sections. The Guide will use v3.6 of procmon throughout on a Windows 10 Build 1909 x64 machine.</p>
+
+
+
+<h2><span class="ez-toc-section" id="Downloading_and_Running_Procmon"></span>Downloading and Running Procmon<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>To get started, you&#8217;re going to need procmon running on your Windows machine. You can get it two different ways; via the traditional download method or what Windows Sysinternals calls <em>Sysinternals live</em>.</p>
+
+
+
+<h3><span class="ez-toc-section" id="The_Old-Fashioned_Way"></span>The Old-Fashioned Way<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Procmon doesn&#8217;t need to be installed; it&#8217;s a single executable. You can get it by downloading <a href="https://download.sysinternals.com/files/ProcessMonitor.zip" target="_blank" rel="noopener">the ZIP file</a>. Once you&#8217;ve got it downloaded, extract the ZIP file with your favorite tool. Below is a PowerShell code snippet if you&#8217;ve saved it to your home folder. This code snippet will create a folder at <em>~\ProcessMonitor</em> with all of the files needed.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">Expand-Archive -Path '~\ProcessMonitor.zip' -Destination ProcessMonitor</code></pre>
+</div>
+
+
+<p>Inside of the <em>~\ProcessMonitor</em> folder, you will see five files:</p>
+
+
+
+<ul><li><em>Eula.txt</em> &#8211; The license agreement you&#8217;ll have to accept before running procmon.</li><li><em>procmon.chm</em> &#8211; The help file which contains all of the provided documentation.</li><li><em>Procmon.exe</em> &#8211; The main EXE that will launch the correct procmon instance (x86 or x64).</li><li><em>Procmon64.exe</em> &#8211; The x64 procmon binary.</li><li><em>Procmon64a.exe</em> &#8211; The alpha 64 procmon binary.</li></ul>
+
+
+
+<p>Now run procmon by invoking the <em>~\ProcessMonitor\procmon.exe</em> file.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Procmon only runs with elevated permissions so you&#8217;ll be prompted to accept this if you have UAC enabled when you run it. There is a way around this which will be touched on later in this Guide.</em></p></blockquote>
+
+
+
+<h3><span class="ez-toc-section" id="Sysinternals_Live"></span>Sysinternals Live<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>If you&#8217;d rather not (or can&#8217;t) download an EXE, you can also use the Sysinternals Live folder. To do this, open up File Explorer and paste in <em>\\<a href="http://live.sysinternals.com" target="_blank" rel="noopener">live.sysinternals.com</a>\tools</em>. You&#8217;ll then see a folder like any ol&#8217; network share containing all of the Sysinternals files including procmon.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1450" height="870" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114535.325.png" alt="Sysinternals Live" class="wp-image-5015" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114535.325.png 1450w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114535.325-300x180.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114535.325-1024x614.png 1024w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114535.325-768x461.png 768w" sizes="(max-width: 1450px) 100vw, 1450px" /><figcaption>Sysinternals Live</figcaption></figure></div>
+
+
+
+<p>Scroll down until you find <strong>procmon</strong>, double-click and voila, you&#8217;re running procmon!</p>
+
+
+
+<h2><span class="ez-toc-section" id="Customizing_Procmon_Start_Behavior"></span>Customizing Procmon Start Behavior<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>By default, procmon launches prompting you to accept an end-user license agreement (EULA) and also open up a window. By using the command-line, you can customize this default behavior.</p>
+
+
+
+<p>For example, if you&#8217;d like to launch procmon minimized by using the <code>/Minimized</code> switch.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="bash" class="language-bash">.\procmon.exe /Minimized</code></pre>
+</div>
+
+
+<p>Perhaps you&#8217;re running procmon on a new machine and would rather not see the EULA prompt. You can disable that on launch using the <code>/AcceptEula</code> switch.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="bash" class="language-bash">.\procmon.exe /AcceptEula</code></pre>
+</div>
+
+
+<p>Although less likely in this day and age, whenever you launch procmon, it detects whether you&#8217;re running a 64-bit or 32-bit OS. If you&#8217;re on a 64-bit machine, it&#8217;ll launch a a 64-bit process and vice versa. If you&#8217;re on a 64-bit machine and would either like to run procmon as a 32-bit process or read a log file (more on that later) that was generated from a 32-bit machine, use the <code>/Run32</code> switch.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="bash" class="language-bash">.\procmon.exe /Run32</code></pre>
+</div>
+
+
+<p>Procmon has other command-line switches customizing behavior but you&#8217;ll learn about this in the coming sections.</p>
+
+
+
+<h2><span class="ez-toc-section" id="Procmon_Intro"></span>Procmon Intro<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>When you fire up procmon for the first time, you might be overwhelmed with the options. Don&#8217;t worry, you&#8217;ll learn just about everything in this Guide! You can see below a typical procmon capture in progress.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1382" height="884" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114743.661.png" alt="Default Procmon process view" class="wp-image-5017" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114743.661.png 1382w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114743.661-300x192.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114743.661-1024x655.png 1024w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114743.661-768x491.png 768w" sizes="(max-width: 1382px) 100vw, 1382px" /><figcaption>Default Procmon process view</figcaption></figure></div>
+
+
+
+<p>The moment you run procmon, it begins capturing many different kinds of Windows events.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>If you don&#8217;t want procmon to automatically begin capturing events, you can start it from the command line by running <code>procmon.exe /NoConnect</code>.</em></p></blockquote>
+
+
+
+<p>As you can see in the screenshot above under the <strong>Operation</strong> column, there are various icons each representing different classes of Windows events. Procmon captures events from five different classes:</p>
+
+
+
+<ul><li>Registry</li><li>Filesystem</li><li>Network</li><li>Processes</li><li>Profiling events</li></ul>
+
+
+
+<p>Each event in all classes is represented in a single list pane of seven columns:</p>
+
+<ul><li><strong>Time of day</strong> &#8211; The time the event occurred.</li><li><strong>Process name</strong> &#8211; The name of the process that triggered the event.</li><li><strong>PID</strong> &#8211; The process identifier.</li><li><strong>Operation</strong> &#8211; The type of event like if the process opened a file, changed a registry key value, etc.</li><li><strong>Path</strong> &#8211; The path to the object the event interacted with like a file path, registry path, etc.</li><li><strong>Result</strong> &#8211; This column will contain numerous values to indicate the result of the event. This value can be as simple as SUCCESS or specific to the event like REPARSE, BUFFER OVERFLOW, NAME NOT FOUND, etc.</li><li><strong>Detail</strong> &#8211; This column contains all of the nitty-gritty detail once you pinpoint an event you&#8217;d like to see.</li></ul>
+
+
+
+<p>If you&#8217;d rather not see a certain column or would like to see what other columns you have available, right-click on any column header and choose <strong>Select columns</strong>. You&#8217;ll be presented with a dialog box where you can customize the viewable columns.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="604" height="900" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114856.187.png" alt="Customizing procmon columns" class="wp-image-5018" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114856.187.png 604w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114856.187-201x300.png 201w" sizes="(max-width: 604px) 100vw, 604px" /><figcaption>Customizing procmon columns</figcaption></figure></div>
+
+
+
+<p>In the event window, double-click on an event. You can find many more details about the process and the event itself by viewing the <strong>Event</strong>, <strong>Process,</strong> and <strong>Stack</strong> tabs.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="970" height="1096" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114943.073.png" alt="Procmon event properties window" class="wp-image-5019" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114943.073.png 970w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114943.073-266x300.png 266w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114943.073-906x1024.png 906w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T114943.073-768x868.png 768w" sizes="(max-width: 970px) 100vw, 970px" /><figcaption>Procmon event properties window</figcaption></figure></div>
+
+
+
+<h3><span class="ez-toc-section" id="Enabling_and_Disabling_Captures"></span>Enabling and Disabling Captures<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>You have complete control over the capture process. You can either disable the entire capture process or disable capturing by event class.</p>
+
+
+
+<p>On the top menu bar, you&#8217;ll see a magnifying glass icon (below). If the magnifying glass is a red X over it, that means the capture is disabled. Otherwise, the capture is enabled.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full is-resized"><img decoding="async" loading="lazy" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115018.522.png" alt="Procmon actively capturing events" class="wp-image-5020" width="580" height="296" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115018.522.png 1252w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115018.522-300x153.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115018.522-1024x523.png 1024w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115018.522-768x393.png 768w" sizes="(max-width: 580px) 100vw, 580px" /><figcaption>Procmon actively capturing events</figcaption></figure></div>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Don&#8217;t leave procmon capturing events for longer than you need. It uses virtual memory to store all of those events and if you&#8217;re not careful, you might end up crashing Windows! You can change this behavior as you&#8217;ll see a bit later.</em></p></blockquote>
+
+
+
+<p>If you&#8217;d rather be more selective, you can also control the capture of each event class. In the menu bar, you&#8217;ll see five of the same icons being displayed in the <strong>Operation</strong> column. By clicking on these buttons, you can enable and disable entire event classes.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="782" height="166" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115116.101.png" alt="Types of Windows events" class="wp-image-5021" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115116.101.png 782w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115116.101-300x64.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115116.101-768x163.png 768w" sizes="(max-width: 782px) 100vw, 782px" /><figcaption>Types of Windows events</figcaption></figure></div>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Hover over each icon with your mouse to see what kind of activity each icon represents.</em></p></blockquote>
+
+
+
+<p>You&#8217;ll see as soon as you click an icon, procmon applies an <em>event filter</em>. Depending on how many events are captured so far, you might see a popup like the one below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="746" height="244" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115202.344.png" alt="Types of Windows events" class="wp-image-5022" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115202.344.png 746w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-10T115202.344-300x98.png 300w" sizes="(max-width: 746px) 100vw, 746px" /><figcaption>Types of Windows events</figcaption></figure></div>
+
+
+
+<blockquote class="wp-block-quote"><p><em>By default, the farthest icon to the right (the black and green graph) isn&#8217;t enabled. If you&#8217;d like to enable this event class when procmon starts up, you can invoke procmon from the command line using <code>.\procmon.exe /Profiling</code>.</em></p></blockquote>
+
+
+
+<p>You can see the number of events in the window by looking at the bottom. As you can see below, procmon has processed 84,334 events but due to the event filter applied, it&#8217;s only showing 15,912 of those or 18% of them. You can also see these events are being stored in virtual memory (more on that later).</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="902" height="126" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110306.717.png" alt="Number of Events in the Window" class="wp-image-5029" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110306.717.png 902w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110306.717-300x42.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110306.717-768x107.png 768w" sizes="(max-width: 902px) 100vw, 902px" /><figcaption>Number of Events in the Window</figcaption></figure></div>
+
+
+
+<h2><span class="ez-toc-section" id="Event_Filters"></span>Event Filters<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>To understand procmon, you undoubtedly need to understand the concept of <em>event filters</em>. Event filters are how you separate the signal from the noise. Event filters hide all of the events you&#8217;re not interested in. Above, you applied event filters by entire event classes but you can get a whole lot more granular.</p>
+
+
+
+<p>There are multiple ways to interact with event filters. Let&#8217;s start out simple. Click on the <strong>Filter</strong> menu item at the top. You&#8217;ll see many different options to work with filters.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="474" height="368" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110816.855.png" alt="Filter menu options" class="wp-image-5030" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110816.855.png 474w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110816.855-300x233.png 300w" sizes="(max-width: 474px) 100vw, 474px" /><figcaption><br>Filter menu options</figcaption></figure></div>
+
+
+
+<h3><span class="ez-toc-section" id="Viewing_Filters"></span>Viewing Filters<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>By default, procmon creates a filter for you. Under the <strong>Filter</strong> menu item, click on <strong>Filter&#8230;</strong>. You&#8217;ll see a <strong>Process Monitor Filter</strong> box come up with two areas; one for filtering your filter rules and one for viewing all of the rules you have set up. You can see an example of this below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1008" height="606" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110912.735.png" alt="Filter rules" class="wp-image-5031" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110912.735.png 1008w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110912.735-300x180.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T110912.735-768x462.png 768w" sizes="(max-width: 1008px) 100vw, 1008px" /><figcaption>Filter rules</figcaption></figure></div>
+
+
+
+<blockquote class="wp-block-quote"><p><em>By default, procmon will show the above filters whenever you launch it. If you&#8217;d like to hide this box, you can do so by launching procmon with the <code>/Quiet</code> switch.</em></p></blockquote>
+
+
+
+<p>You should see that without creating any filters of your own, procmon is also using a built-in set of filter rules. If you scroll down in the <strong>Process Monitor Filter</strong> box, you&#8217;ll see many different types of rules defined. Here you can view each category, operator, value, and action to take on each rule.</p>
+
+
+
+<p>These filters are applied because you&#8217;ll typically not need to see the events these filterss exclude. But, if you want to see <em>all</em> events, you can also just remove all of the default filters or click on <strong>Filter</strong> —&gt; <strong>Enable Advanced Output</strong> as shown below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="508" height="388" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111004.966.png" alt="Enable Advanced Output" class="wp-image-5032" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111004.966.png 508w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111004.966-300x229.png 300w" sizes="(max-width: 508px) 100vw, 508px" /><figcaption>Enable Advanced Output</figcaption></figure></div>
+
+
+
+<p>For example, you&#8217;ll see a few rules up top that show <strong>Process Name</strong> for the <strong>Column</strong> value, <strong>is</strong> for <strong>Relation</strong>, various procmon-related processes for the <strong>Value</strong> column&#8217;s value, and an <strong>Action</strong> of <strong>Exclude</strong>. In plain English, these rules tell procmon to not display (exclude) a process with the name of <em>procmon.exe,</em> for example.</p>
+
+
+
+<h2><span class="ez-toc-section" id="Managing_Event_Filter_Rules"></span>Managing Event Filter Rules<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Depending on your use case, you will undoubtedly need to add your own rules. There are a few different ways to add rules.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Using_the_Process_Monitor_Filter_Box"></span>Using the Process Monitor Filter Box<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>In the last section, you saw what the <strong>Process Monitor Filter</strong> box looked like and viewed all of the rules. In this box, you can also create, modify and removal rules too.</p>
+
+
+
+<p>Let&#8217;s say you&#8217;d like to only see the times when the <em>explorer.exe</em> process queried a registry key.</p>
+
+
+
+<h4><span class="ez-toc-section" id="Adding_Event_Filters"></span>Adding Event Filters<span class="ez-toc-section-end"></span></h4>
+
+
+
+<p>In the <strong>Process Monitor Filter</strong> box:</p>
+
+
+
+<ol><li>Click on the left-most dropdown list. This list shows all of the various categories of events you can filter on. You can see below there are quite a bit! <br><br>Each item you see in this list corresponds to a column displayed in the main display as shown below. For this article&#8217;s purpose, choose <strong>Process Name</strong>. </li></ol>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1534" height="966" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111205.124.png" alt="Process Monitor Filter" class="wp-image-5033" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111205.124.png 1534w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111205.124-300x189.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111205.124-1024x645.png 1024w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111205.124-768x484.png 768w" sizes="(max-width: 1534px) 100vw, 1534px" /><figcaption>Process Monitor Filter</figcaption></figure></div>
+
+
+
+<p>2. Choose a category then choose an operator. By default, the dropdown box will be <strong>is</strong> but you have many other options if you click on the dropdown. These operators allow you to filter whatever option you picked many different ways. Since you&#8217;re looking for a process that&#8217;s exactly <em>explorer.exe</em>, choose <strong>is</strong>. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="160" height="236" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111305.832.png" alt="Operator List" class="wp-image-5035"/><figcaption>Operator List</figcaption></figure></div>
+
+
+
+<p>3. Finally, pick the process name as shown below. You&#8217;ll notice that since you chose <strong>Process Name</strong> as the category, procmon automatically brings up all of the currently running processes to choose from. </p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="788" height="650" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111359.152.png" alt="Process Name in Process Monitor Filter" class="wp-image-5036" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111359.152.png 788w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111359.152-300x247.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111359.152-768x634.png 768w" sizes="(max-width: 788px) 100vw, 788px" /><figcaption>Process Name in Process Monitor Filter</figcaption></figure>
+
+
+
+<p>4. Ensure you&#8217;ve chosen <strong>Include</strong> since you <em>only</em> want to see the events matching this criteria. And then click on the <strong>Add</strong> button to add the rule to your current filter. You can see below, the Include rule is shown as a green check mark.</p>
+
+
+
+<p>5. Finally, since you want all of the events where <em>explorer.exe</em> queries a registry key, be sure to include the <strong>RegQueryKey</strong> operation also. When you&#8217;re done, you should see both rules added. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1000" height="386" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111505.325.png" alt="RegQueryKey" class="wp-image-5037" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111505.325.png 1000w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111505.325-300x116.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111505.325-768x296.png 768w" sizes="(max-width: 1000px) 100vw, 1000px" /><figcaption>RegQueryKey</figcaption></figure></div>
+
+
+
+<p>6. Click OK and you&#8217;ll then see the main window remove all of the events that do not match the filter rules you just defined. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1298" height="704" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111609.384.png" alt="Events that do not match the filter rules" class="wp-image-5038" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111609.384.png 1298w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111609.384-300x163.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111609.384-1024x555.png 1024w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111609.384-768x417.png 768w" sizes="(max-width: 1298px) 100vw, 1298px" /><figcaption>Events that do not match the filter rules</figcaption></figure></div>
+
+
+
+<h4><span class="ez-toc-section" id="Removing_Event_Filter_Rules"></span>Removing Event Filter Rules<span class="ez-toc-section-end"></span></h4>
+
+
+
+<p>You can also just as easily remove and change up filter rules.</p>
+
+
+
+<ol><li>Click on the Filter icon at the top of the main window to open the <strong>Process Monitor Filter</strong> box. </li></ol>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="654" height="238" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111720.722.png" alt="Process Monitor Filter Box" class="wp-image-5040" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111720.722.png 654w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111720.722-300x109.png 300w" sizes="(max-width: 654px) 100vw, 654px" /><figcaption>Process Monitor Filter Box</figcaption></figure></div>
+
+
+
+<p>2. Highlight both of the filter rules you created above, click on the <strong>Remove</strong> button as shown below and click <strong>OK</strong>. This action will remove both of the custom rules added earlier. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1006" height="408" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111810.948.png" alt="remove both of the custom rules added" class="wp-image-5041" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111810.948.png 1006w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111810.948-300x122.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T111810.948-768x311.png 768w" sizes="(max-width: 1006px) 100vw, 1006px" /><figcaption>remove both of the custom rules added</figcaption></figure></div>
+
+
+
+<blockquote class="wp-block-quote"><p> <em>You can also click on the <strong>Reset</strong> button to automatically remove all of the custom filter rules.</em></p></blockquote>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Whenever you apply a filter, quit procmon and start it again, that filter will be applied again. If you want to ensure no filter is applied when you start procmon, you can invoke procmon with the <code>/NoFilter</code> switch.</em></p></blockquote>
+
+
+
+<h3><span class="ez-toc-section" id="Adding_Filter_Rules_with_Right-Click"></span>Adding Filter Rules with Right-Click<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>You can also add filter rules via a right-click menu if you right-click on a process. As you can see below, you can create any kind of rule directly from this menu; no need to go to the <strong>Process Monitor Filter</strong> box at all!</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1016" height="898" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T113409.916.png" alt="add filter rules via a right-click menu" class="wp-image-5043" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T113409.916.png 1016w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T113409.916-300x265.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T113409.916-768x679.png 768w" sizes="(max-width: 1016px) 100vw, 1016px" /><figcaption>add filter rules via a right-click menu</figcaption></figure></div>
+
+
+
+<p>To remove filter rules created via the right-click menu, you will still have to go to the <strong>Process Monitor Filter</strong> box to remove them.</p>
+
+
+
+<h2><span class="ez-toc-section" id="Saving_and_Managing_Custom_Filters"></span>Saving and Managing Custom Filters<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>If you&#8217;re a procmon power user, they&#8217;ll probably come a time when you have sets of filter rules for various occasions. Using procmon&#8217;s filter-saving and organizing features, you can manage and save as many of these sets as you wish.</p>
+
+
+
+<p>Let&#8217;s say you&#8217;ve got a bunch of custom filters defined and you&#8217;d like to save them to use them again sometime. You can save this filter by going up to <strong>Filter,</strong> choosing <strong>Save Filter</strong> and providing a name as shown below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="512" height="420" src="https://adamtheautomator.com/wp-content/uploads/2021/05/savinga_filter-min.gif" alt="Saving a filter" class="wp-image-8604"/><figcaption>Saving a filter</figcaption></figure></div>
+
+
+
+<p>Once the filter is saved, you can then go up to <strong>Filter</strong>, click on <strong>Organize Filters</strong> where you&#8217;ll then see all of the filters you&#8217;ve saved. From here, you can click on a filter, click <strong>OK</strong> and your saved filter will apply to the current window.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="500" height="401" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-1.gif" alt="Viewing and loading filters" class="wp-image-5047"/><figcaption>Viewing and loading filters</figcaption></figure></div>
+
+
+
+<p>You can also load a saved filter by hovering over <strong>Load Filter</strong> in the <strong>Filter</strong> dropdown and choosing your saved filter from the list on the right.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="850" height="296" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T113951.635.png" alt="Loading a filter" class="wp-image-5048" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T113951.635.png 850w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T113951.635-300x104.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T113951.635-768x267.png 768w" sizes="(max-width: 850px) 100vw, 850px" /><figcaption>Loading a filter</figcaption></figure></div>
+
+
+
+<h2><span class="ez-toc-section" id="Importing_and_Exporting_Filters"></span>Importing and Exporting Filters<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>If you expect to load procmon on another computer and keep all of your saved filters, you&#8217;re out of luck. Procmon doesn&#8217;t have a cloud service to sync filters. But, you can manually export filters and import them later.</p>
+
+
+
+<p>To export procmon filters:</p>
+
+
+
+<ol><li>Go to the <strong>Organize Filters</strong> box.</li><li>Click on the filter you&#8217;ve already saved and would like to export.</li><li>Click on the <strong>Export</strong> button.</li><li>Provide a name, choose a path and click <strong>OK</strong>. You&#8217;ll see that all procmon filters are saved with a PMF extension.</li></ol>
+
+
+
+<p>To import procmon filters:</p>
+
+
+
+<ol><li>Go to the <strong>Organize Filters</strong> box.</li><li>Click on the <strong>Import</strong> button.</li><li>Find the filter you&#8217;d like to import and click <strong>OK</strong>.</li></ol>
+
+
+
+<blockquote class="wp-block-quote"><p><em>You can see a visual walkthrough of these steps below.</em></p></blockquote>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="500" height="401" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-1-1.gif" alt="import procmon filters" class="wp-image-5049"/><figcaption>import procmon filters</figcaption></figure></div>
+
+
+
+<h2><span class="ez-toc-section" id="Importing_and_Exporting_Procmon_Configurations"></span>Importing and Exporting Procmon Configurations<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>As you learned above, you can export and import procmon filters via PMF files. But filters are only one component that makes up a procmon instance. You can customize the columns, change the storage location (more on that later) and more. Wouldn&#8217;t it be nice to save all of those settings to? You can!</p>
+
+
+
+<p>To save the entire procmon configuration, click on <strong>File</strong> —&gt; <strong>Export Configuration</strong> then choose a location where you&#8217;d like to save the PMC file (procmon configuration).</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="462" height="390" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T115622.235.png" alt="Export Configuration" class="wp-image-5050" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T115622.235.png 462w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T115622.235-300x253.png 300w" sizes="(max-width: 462px) 100vw, 462px" /><figcaption>Export Configuration</figcaption></figure></div>
+
+
+
+<p>Once saved, you can then close procmon on the same computer (or even a different one), open up procmon and click on <strong>File</strong> —&gt; <strong>Import Configuration</strong> where procmon will apply all of the same filters and other settings just as they were exported.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em><em>You can also load saved configurations (filters included) via the command-line using the /LoadConfig switch followed by the path of the file e.g. ./procmon.exe /LoadConfig C:\ProcmonConfigs\file_deletion.pmc.</em></em></p></blockquote>
+
+
+
+<h2><span class="ez-toc-section" id="Highlighting_Events_and_Converting_to_Filters"></span>Highlighting Events and Converting to Filters<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Perhaps you need to make certain events easier to spot but don&#8217;t necessarily want to remove any events from view with a filter. In that case, you can use highlights. Highlights allow you to build sets of rules much like filters but instead of hiding events, the events&#8217; background color is changed.</p>
+
+
+
+<p>Perhaps you see a process in the event list called <em>ctfmon.exe</em> you&#8217;d like to highlight in the list. You can create a highlight rule by:</p>
+
+
+
+<ol><li>Right-click on the event you&#8217;d like to highlight an attribute of.</li><li>Click on <strong>Highlight</strong> and choose an attribute of that event to highlight on. In this example, you&#8217;d choose <strong>Process Name</strong>. You&#8217;ll then see the background color change to a light blue color.</li><li>Once the highlight rule is created, you can then go to the <strong>Process Monitor Highlighting</strong> box by clicking on <strong>Filter</strong> —&gt; <strong>Highlight</strong>. You&#8217;ll see the highlight rule created there.</li><li>From the <strong>Process Monitor Highlighting</strong> box, you can add and remove rules just like you can with a filter.</li><li>If you&#8217;ve created some highlight rules and would like to turn them into a filter, you can do so by clicking the <strong>Make Filter</strong> button in the <strong>Process Monitor Highlighting</strong> box.</li></ol>
+
+
+
+<blockquote class="wp-block-quote"><p><em>You can see a visual walkthrough of these steps below.</em></p></blockquote>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img decoding="async" loading="lazy" width="500" height="401" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2.gif" alt="Highlighting Events and Converting to Filters" class="wp-image-5053"/><figcaption>Highlighting Events and Converting to Filters</figcaption></figure></div>
+
+
+
+<h2><span class="ez-toc-section" id="Exporting_and_Opening_Events_tofrom_Log_Files"></span>Exporting and Opening Events to/from Log Files<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>For procmon to display events to you in a window, they have to be stored somewhere. By default, events are stored in virtual memory, more specifically your <a href="https://docs.microsoft.com/en-us/windows/client-management/introduction-page-file" target="_blank" rel="noopener">page file</a>.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="902" height="126" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133251.232.png" alt="events are stored in virtual memory" class="wp-image-5054" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133251.232.png 902w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133251.232-300x42.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133251.232-768x107.png 768w" sizes="(max-width: 902px) 100vw, 902px" /><figcaption>events are stored in virtual memory</figcaption></figure></div>
+
+
+
+<p>Depending on how <a href="https://www.poweradmin.com/blog/paging-file-percent-of-usage-counter/" target="_blank" rel="noopener">big of a page file</a> you&#8217;ve defined (and system commit limit) depends on how many events procmon can store.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Procmon is capable of capturing up to 199 million events.</em></p></blockquote>
+
+
+
+<h3><span class="ez-toc-section" id="Saving_Events_to_a_Log_File"></span>Saving Events to a Log File<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Perhaps you need to save these events for later investigation or perhaps load on another computer? In that case, you need to save events to a log file (PML).</p>
+
+
+
+<p>One way to save those handy events is click on <strong>File</strong> —&gt; <strong>Save</strong>. This action brings up the <strong>Save To File</strong> dialog box below where you&#8217;re presented with a few options.</p>
+
+
+
+<p><strong>Events to save:</strong></p>
+
+
+
+<ul><li><strong>All events</strong> &#8211; This option is exactly how it seems. It will save <em>all</em> events procmon&#8217;s captured regardless if you&#8217;ve applied an event filter or not to a file.</li><li><strong>Events displayed using current filter</strong> &#8211; This option does not save <em>all</em> captured events but only those that have passed your currently-active event filters.</li><li><strong>Highlighted events</strong> &#8211; This option only exports to the log those events you have currently highlighted.</li></ul>
+
+
+
+<p><strong>Format:</strong></p>
+
+
+
+<ul><li><strong>Native Process Monitor Format (PML)</strong> &#8211; The default format to save all events to (PML).</li><li><strong>Comma-separated Values (CSV)</strong> &#8211; Save all events in a CSV file.</li><li><strong>Extensible Markup Language (XML)</strong> &#8211; Save all events in an XML file. This format also gives you the ability to save track traces (more on that later) and will resolve stack symbols.</li></ul>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="794" height="650" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133342.928.png" alt="Events" class="wp-image-5055" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133342.928.png 794w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133342.928-300x246.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133342.928-768x629.png 768w" sizes="(max-width: 794px) 100vw, 794px" /><figcaption>Events</figcaption></figure></div>
+
+
+
+<p>Click <strong>OK</strong> and procmon will commit all of the currently captured events matching your criteria to the file of your choosing.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Opening_Saved_Event_Logs"></span>Opening Saved Event Logs<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>You&#8217;ve captured thousands of events on one computer, saved it that capture session to a PML file and have copied it to another computer for investigation. Now what? You need to open it.</p>
+
+
+
+<p>You can open any PML file regardless if you captured it on your local computer or not by simply going to up <strong>File</strong> —&gt; <strong>Open</strong> and choosing the PML file.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em><em>You can open logs from the command line using the /OpenLog switch e.g. procmon.exe /OpenLog C:\MyLogFile.pml.</em></em></p></blockquote>
+
+
+
+<h2><span class="ez-toc-section" id="Automatically_Logging_Events"></span>Automatically Logging Events<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>In the previous section, you learned how to export events to a log after you&#8217;ve captured them. But what if you know ahead of time you want events in a PML, XML or CSV file? You can have procmon automatically capture events into one of those log file formats.</p>
+
+
+
+<p>Also, storing events in the page file is fine if you&#8217;re in a simple ad-hoc troubleshooting session that may last for less than an hour so. This method has a few drawbacks though.</p>
+
+
+
+<ol><li>Whenever you close procmon, the events are gone.</li><li>As mentioned before, your page file size can grow out of hand.</li></ol>
+
+
+
+<blockquote class="wp-block-quote"><p><em>When using virtual memory as a storage location, you can discover how much space is left for procmon to use by clicking on <strong>File —&gt; Backing Files</strong>.</em></p></blockquote>
+
+
+
+<p>What to do? Change the storage location.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Storing_Events_on_Disk"></span>Storing Events on Disk<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>You can change where procmon stores events from your page file to disk by:</p>
+
+
+
+<ol><li>Stop a capture if you&#8217;re currently running one.</li></ol>
+
+
+
+<p>2. Click on <strong>File</strong> —&gt; <strong>Backing Files</strong>. You will then see a summary of events stored and size along with an option to change the storage location. </p>
+
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img decoding="async" loading="lazy" width="942" height="612" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133551.388-1.png" alt="" class="wp-image-5059" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133551.388-1.png 942w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133551.388-1-300x195.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133551.388-1-768x499.png 768w" sizes="(max-width: 942px) 100vw, 942px" /><figcaption>Process Monitor Backing Files</figcaption></figure></div>
+
+
+
+<p>3. To change the storage location to a file, click on the <strong>Use file named:</strong> field, click the ellipses button and define a file location. </p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Try to use a different disk volume than what procmon is running on for best performance.</em> </p></blockquote>
+
+
+
+<blockquote class="wp-block-quote"><p><em><em>You can force procmon to use a file as a storage location by also launching it from the command line and using the <code>/BackingFile</code> switch. If you&#8217;d like to ever switch back to using the page file again, use the <code>/PagingFile</code> switch.</em></em></p></blockquote>
+
+
+
+<h2><span class="ez-toc-section" id="Converting_Log_Files"></span>Converting Log Files<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Procmon can save log files in three different formats; PML, CSV and XML. Perhaps you&#8217;ve saved a log file as PML and need to parse the events with a script or other tool. In that case, you can convert that PML log file into XML or CSV on the command-line.</p>
+
+
+
+<p>Let&#8217;s say you have a PML log file at <em>C:\capture.pml</em>. You&#8217;d like to convert this log file to XML and one in CSV format. You can do so by first opening the log file with the <code>/OpenLog</code> switch and then using a <code>/Save*</code> switch to turn around and save it.</p>
+
+
+
+<p>Procmon has a standard <code>/SaveAs</code> parameter that allows you to save a log in any of the three aforementioned formats. The <code>/SaveAs</code> parameter will set the file format depending on the file extension you provide.</p>
+
+
+
+<p>Below are some examples:</p>
+
+
+
+<p></p>
+
+
+
+<p>Convert the <em>capture.pml</em> log to <em>capture.xml</em>:</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="bash" class="language-bash">procmon.exe /OpenLog C:\capture.pml /SaveAs C:\capture.xml</code></pre>
+</div>
+
+
+<p>Convert the <em>capture.pml</em> log to <em>capture.csv</em>:</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">procmon.exe /OpenLog C:\capture.pml /SaveAs C:\capture.csv</code></pre>
+</div>
+
+
+<p>Remember the stack trace and stack symbol resolution options in <strong>Save to File</strong> dialog box above? You can enable these options too using <code>/SaveAs1</code> and <code>/SaveAs2</code>.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>You can only save stack traces and symbol information in XML format.</em></p></blockquote>
+
+
+
+<p>Convert the <em>capture.pml</em> log to capture.xml including stack information:</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="bash" class="language-bash">procmon.exe /OpenLog C:\capture.pml /SaveAs1 C:\capture.xml</code></pre>
+</div>
+
+
+<p>Convert the <em>capture.pml</em> log to capture.xml including stack information with symbols:</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="bash" class="language-bash">procmon.exe /OpenLog C:\capture.pml /SaveAs2 C:\capture.xml</code></pre>
+</div>
+
+
+<p>Know that adding stack traces and symbols will drastically increase the time to convert and you will undoubtedly see a progress indicator as shown below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="742" height="242" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133931.047.png" alt="Progress Indicator" class="wp-image-5061" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133931.047.png 742w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T133931.047-300x98.png 300w" sizes="(max-width: 742px) 100vw, 742px" /><figcaption>Progress Indicator</figcaption></figure></div>
+
+
+
+<h2><span class="ez-toc-section" id="Capturing_Boot-Time_Events"></span>Capturing Boot-Time Events<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Sometimes the information you need to investigate isn&#8217;t generated while Windows is up and running. You might also need to investigate what a process is doing whenever Windows is just booting up too.</p>
+
+
+
+<p>It&#8217;s common to need to troubleshoot issues like slow boot-up performance or perhaps malware that decides to run immediately as Windows starts up. Procmon has a featured call <em>Boot Time Logging</em> you can enable to capture this information.</p>
+
+
+
+<p>To enable boot logging, click on <strong>Options</strong> —&gt; <strong>Enable Boot Logging</strong> in the menu as shown below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="588" height="512" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134013.144.png" alt="Enabling boot logging" class="wp-image-5062" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134013.144.png 588w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134013.144-300x261.png 300w" sizes="(max-width: 588px) 100vw, 588px" /><figcaption>Enabling boot logging</figcaption></figure></div>
+
+
+
+<p>Once you click <strong>Enable Boot Logging</strong>, you&#8217;ll see a dialog box pop up asking for some optional information. This dialog box is where you can capture thread-profiling events.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Enabling thread-profiling events are an advanced use case. When you enable thread profiling, procmon captures thread stack traces and CPU utilization that you can use to identify the source of CPU-related performance issues.</em></p></blockquote>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="718" height="340" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134055.444.png" alt="Optional thread-profiling events for boot time logging" class="wp-image-5064" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134055.444.png 718w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134055.444-300x142.png 300w" sizes="(max-width: 718px) 100vw, 718px" /><figcaption>Optional thread-profiling events for boot time logging</figcaption></figure></div>
+
+
+
+<p>Once you click on <strong>OK</strong>, procmon will enable boot logging which instructs the filter driver (more on this later) to wait for the next reboot of Windows. When you reboot Windows, procmon will then begin capturing process events just as if you had initiated it manually.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em><em>All boot-time event data is stored in a temporary log file called C:\Windows\procmon.pmb.</em></em></p></blockquote>
+
+
+
+<p>When Windows is back up, open up procmon again. You should see a dialog box like below. Here, click <strong>Yes</strong> to convert the boot-time data to the PML format by then selecting the log file to save the data in.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="854" height="316" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134150.475.png" alt="Confirmation to convert boot-time events to PML" class="wp-image-5065" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134150.475.png 854w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134150.475-300x111.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134150.475-768x284.png 768w" sizes="(max-width: 854px) 100vw, 854px" /><figcaption>Confirmation to convert boot-time events to PML</figcaption></figure></div>
+
+
+
+<p>As procmon converts the data, you will see a progress bar like below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="744" height="242" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134244.813.png" alt="Converting boot-time event data to PML" class="wp-image-5067" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134244.813.png 744w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134244.813-300x98.png 300w" sizes="(max-width: 744px) 100vw, 744px" /><figcaption>Converting boot-time event data to PML</figcaption></figure></div>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Don&#8217;t forget to bring up procmon again after a reboot! Procmon will begin capturing events as soon as Windows boots up in C:\Windows\procmon.pmb. It will continue to do so until you turn it off by opening up procmon again.</em></p></blockquote>
+
+
+
+<h2><span class="ez-toc-section" id="Running_Procmon_Remotely"></span>Running Procmon Remotely<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Although procmon only runs locally on a Windows machine, you can <em>invoke</em> procmon to run remotely via <em>psexec</em> or PowerShell&#8217;s <code>Invoke-Command</code> command.</p>
+
+
+
+<p><strong><em>Related: <a href="https://adamtheautomator.com/psexec/">PsExec: The Ultimate Guide</a>, <a href="https://adamtheautomator.com/invoke-command/">Invoke-Command: The Best Way to Run Remote Code</a></em></strong></p>
+
+
+
+<p>To run procmon with PowerShell&#8217;s <code>Invoke-Command</code> command, follow the following steps:</p>
+
+
+
+<ol><li>Enable <a href="https://adamtheautomator.com/psremoting/">PowerShell Remoting</a> on the remote machine if not already.</li></ol>
+
+
+
+<p>2. Copy the procmon folder to the remote computer via the PowerShell console. </p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">Copy-Item -Path C:\procmon \\MYPC\c$</code></pre>
+</div>
+
+
+<p>3. Invoke procmon via PowerShell ensuring you skip the EULA confirmation and force procmon to store events in a backing file rather than virtual memory and do not prompt for the filter upon start. </p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">Invoke-Command -Computer MYPC -ScriptBlock { C:\procmon\procmon.exe /AcceptEula /BackingFile C:\capture.pml /Quiet }</code></pre>
+</div>
+
+
+<p>4. At this point procmon has begun capturing. Reproduce the issue you&#8217;re trying to capture.</p>
+
+
+
+<p>5. Stop procmon on the remote computer by using the /Terminate switch.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">Invoke-Command -Computer MYPC -ScriptBlock { C:\procmon\procmon.exe /Terminate }</code></pre>
+</div>
+
+
+<p>6. Wait for procmon to shut down. As a shortcut, you can periodically check for the procmon process and return control to the PowerShell console when it&#8217;s complete. </p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">while (Invoke-Command -Computer MYPC -ScriptBlock { <a href="https://adamtheautomator.com/powershell-get-process/">Get-Process</a> procmon -ErrorAction Ignore }) {
+     Write-Host "Waiting on procmon to exit…"
+     Start-Sleep -Seconds 5
+ }</code></pre>
+</div>
+
+
+<p>7. Copy the remote log file to the local computer </p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">$session = New-PSSession -ComputerName MYPC
+Copy-Item -Path C:\log.pml -Destination C:\ -FromSesson $session
+$session | Remove-PSSession</code></pre>
+</div>
+
+
+<p>By now, you now have the remotely-executed log file on your local computer!</p>
+
+
+
+<p>If you&#8217;d like a proper PowerShell script to manage this capture, you can find it below.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">[CmdletBinding()]
+ param(
+     [Parameter()]
+     [string]$ComputerName, 
+     [Parameter()]
+     [string]$LogFilePath = 'C:\capture.pml'
+ )
+ $procmonFolderPath = 'C:\procmon'
+ try {
+     $session = New-PSSession -ComputerName $ComputerName
+     Copy-Item -Path $procmonFolderPath -Destination $procmonFolderPath -ToSession $session $scriptBlock = {
+         &amp; "$using:procmonFolderPath\procmon.exe" /AcceptEula /BackingFile $using:LogFilePath /Quiet
+         &amp; "$using:procmonFolderPath\procmon.exe" /Terminate
+         while (Get-Process procmon -ErrorAction Ignore) {
+             Write-Host "Waiting on procmon to exit…"
+             Start-Sleep -Seconds 5
+         }
+     }
+     Copy-Item -Path $LogFilePath -Destination C:\ -FromSesson $session
+ } catch {
+     throw $_
+ } finally {
+     $session | Remove-PSSession
+ }</code></pre>
+</div>
+
+
+<h2><span class="ez-toc-section" id="Setting_up_Long-Running_Procmon_Captures"></span>Setting up Long-Running Procmon Captures<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>A busy Windows system can produce <em>a lot</em> of events procmon captures that can overwhelm your PC. If you intend to run procmon for an extended amount of time, there a few measure you should take into consideration.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Drop_Filtered_Events"></span>Drop Filtered Events<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>When procmon is running a capture, it captures <em>all</em> events. You can create and apply event filters but these filters just hide the events on the screen; they don&#8217;t prevent procmon from capturing them.</p>
+
+
+
+<p>If you intend to perform longer-running procmon captures, it&#8217;s always a good idea to choose <strong>Drop Filtered Events</strong> from the <strong>Filter</strong> menu as shown below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="584" height="428" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134852.675.png" alt="Drop Filtered Events" class="wp-image-5069" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134852.675.png 584w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T134852.675-300x220.png 300w" sizes="(max-width: 584px) 100vw, 584px" /><figcaption>Drop Filtered Events</figcaption></figure></div>
+
+
+
+<p>Once you select the <strong>Drop Filtered Events</strong> item, procmon immediately begins dropping all filtered events. Procmon doesn&#8217;t show them on the screen nor does it save them to virtual memory or a log file. Dropping unwanted events entirely helps conserve resources.</p>
+
+
+
+<h2><span class="ez-toc-section" id="Advanced_Topics"></span>Advanced Topics<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Are you still fiending for more information on procmon and how to use it? Let&#8217;s jump into some advanced topics! These topics are those that you probably won&#8217;t need to know about too often. These topics are around more under-the-hood types of procmon features but, this information can be helpful when troubleshooting procmon.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Filter_Drivers"></span>Filter Drivers<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>To capture events, procmon registers and uses a <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/kernel/filter-drivers" target="_blank" rel="noopener">filter driver</a> through the <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/ifs/filter-manager-concepts" target="_blank" rel="noopener">Windows Filter Manager (FltDrv)</a>. This filter driver called PROCMON24 gets installed when you start a capture. Sometimes this filter driver can conflict with other applications.</p>
+
+
+
+<p>After you start procmon, open up an elevated PowerShell console or command prompt and run <code>fltmc filters</code>. The <code>fltmc</code> utility lists, loads and unloads filter drivers. When you run this, you&#8217;ll see the PROCMON24 filter loaded as shown below.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Notice the <strong>Altitude</strong> of <strong>PROCMON24</strong> is <strong>385200</strong> by default with other filters having a lower number. The filter driver altitude represents the level at which a filter driver can &#8220;see&#8221; events. For example, an events happening at the wcifs, luafv or Wof level, procmon will be unable to see. More on changing this later.</em></p></blockquote>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="992" height="422" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135132.474.png" alt="Procmon 24" class="wp-image-5071" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135132.474.png 992w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135132.474-300x128.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135132.474-768x327.png 768w" sizes="(max-width: 992px) 100vw, 992px" /><figcaption>Procmon 24</figcaption></figure></div>
+
+
+
+<blockquote class="wp-block-quote"><p><em>The PROCMON24 filter driver remains loaded even when procmon isn&#8217;t running.</em></p></blockquote>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Sometimes procmon may have problems loading a filter driver. To troubleshoot, open procmon with the <code>/NoConnection</code> switch to prevent procmon from connecting to the filter driver.</em></p></blockquote>
+
+
+
+<h4><span class="ez-toc-section" id="Unloading_the_PROCMON24_Filter_Driver"></span>Unloading the PROCMON24 Filter Driver<span class="ez-toc-section-end"></span></h4>
+
+
+
+<p>There are some cases where the PROCMON24 filter driver may conflict with various hardware devices and you&#8217;ll need to unload it. But, this situation may not be as easy as it seems.</p>
+
+
+
+<p>You can unload filter drivers using the <code>fltmc unload</code> command followed by the name of the filter driver.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">fltmc unload PROCMON24</code></pre>
+</div>
+
+
+<p>But if you try the above command, you&#8217;ll soon find out that it doesn&#8217;t work. You can&#8217;t unload this filter driver because presumedly the developer didn&#8217;t add this ability.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img decoding="async" src="https://i.stack.imgur.com/GuRqD.jpg" alt="Can't Unload the Filter"/><figcaption>Can&#8217;t Unload the Filter</figcaption></figure></div>
+
+
+
+<p>If you need to unload the PROCMON24 filter driver, a reboot, unfortunately, is the only way to do it.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Stack_Traces"></span>Stack Traces<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Sometimes simple events like reading a registry key, opening a file, or calling a network address aren&#8217;t deep enough. You need to dig deeper and see a history of the actual Windows API function calls that a process is calling. You need to look at a process&#8217;s <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/examining-the-stack-trace" target="_blank" rel="noopener">stack trace</a>.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>A <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/examining-the-stack-trace" target="_blank" rel="noopener">stack trace</a> is the history of various functions called during various function calls when a process is running.</em></p></blockquote>
+
+
+
+<p>With a list of events showing up in procmon, double-click on any event and click on the <strong>Stack</strong> tab as shown below. The <strong>Stack</strong> tab represents function calls that individual process has called at the time the event occurred.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="972" height="1094" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135506.858.png" alt="Stack Tab" class="wp-image-5073" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135506.858.png 972w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135506.858-267x300.png 267w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135506.858-910x1024.png 910w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135506.858-768x864.png 768w" sizes="(max-width: 972px) 100vw, 972px" /><figcaption>Stack Tab</figcaption></figure></div>
+
+
+
+<p>The topic of stack traces could go on for a long time. If you&#8217;d like to learn more about understanding a process&#8217;s call stack, check out the article <em><a href="https://techcommunity.microsoft.com/t5/iis-support-blog/getting-better-stack-traces-in-process-monitor-process-explorer/ba-p/376407" target="_blank" rel="noopener">Getting better stack traces in Process Monitor</a></em></p>
+
+
+
+<h3><span class="ez-toc-section" id="Changing_Procmons_Altitude_Capturing_Lower-Level_Events"></span>Changing Procmon&#8217;s Altitude (Capturing Lower-Level Events)<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>As covered earlier, procmon uses a filter driver to capture events. Even though it may seem procmon captures <em>every</em> Windows event (there are a lot of events that show up in the procmon window!), it doesn&#8217;t. Procmon only captures events that it&#8217;s filter driver knows about or the <em>altitude</em> its filter driver is at.</p>
+
+
+
+<p>If, for example, you need to log antivirus activity, low-level storage and other lower-level hardware events, you must change the altitude of the PROCMON24 filter driver to be lower than the others.</p>
+
+
+
+<p>To do that:</p>
+
+
+
+<ol><li>Ensure procmon is closed.</li></ol>
+
+
+
+<p>2. Find the lowest altitude of the currently-loaded filter drivers with the <code>fltmc</code> command. </p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">fltmc filter</code></pre>
+</div>
+
+
+<p>3. Change the Altitude registry value under the <em>HKLM\System\CurrentControlSet\Services\PROCMON24\Instances\Process Monitor 24 Instance</em> registry key to 100 less than the lowest altitude value (to see <em>all</em> events).</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em><em>Depending on the version of procmon you have installed may change the registry key location. This tutorial is using Procmon 2.4.</em></em></p></blockquote>
+
+
+
+<p>You can open up an elevated PowerShell session and run the below code snippet to quickly change the value. </p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Services\PROCMON24\Instances\Process Monitor 24 Instance' -Name 'Altitude' -Value 40400</code></pre>
+</div>
+
+
+<blockquote class="wp-block-quote"><p><em>The lower you set the altitude the more events you&#8217;ll have to manage. Do not set the altitude lower than what you need.</em></p></blockquote>
+
+
+
+<p>4. Deny <em>Delete</em> and <em>Set Value</em> rights for <strong>Everyone</strong> on the <em>Process Monitor 24 Instance</em> key. When procmon runs again, it will attempt to set the <code>Altitude</code> value back to default. You can change these permissions via the <a href="https://support.microsoft.com/en-us/windows/how-to-open-registry-editor-in-windows-10-deab38e6-91d6-e0aa-4b7c-8878d9e07b11" target="_blank" rel="noopener">regedit utility</a> or just run the below PowerShell snippet. </p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">$regKeyPath = 'HKLM:\System\CurrentControlSet\Services\PROCMON24\Instances\Process Monitor 24 Instance'
+$acl = Get-Acl $regKeyPath
+$idRef = System.Security.Principal.NTAccount
+$regRights = @([System.Security.AccessControl.RegistryRights]::Delete,[System.Security.AccessControl.RegistryRights]::SetValue) 
+$inhFlags = [System.Security.AccessControl.InheritanceFlags]::None
+$prFlags = [System.Security.AccessControl.PropagationFlags]::None
+$acType = [System.Security.AccessControl.AccessControlType]::Deny
+$rule = New-Object System.Security.AccessControl.RegistryAccessRule ($idRef, $regRights, $inhFlags, $prFlags, $acType) 
+$acl.SetAccessRule($rule) $acl | Set-Acl -Path $regKeyPath</code></pre>
+</div>
+
+
+<p>5. Unload the PROCMON24 filter driver by rebooting Windows.</p>
+
+
+
+<p>6. Start procmon.</p>
+
+
+
+<p>7. Open up a PowerShell console or command prompt and run <code>fltmc filters</code>. You should now see the procmon filter driver at the new altitude. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1008" height="484" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135957.653.png" alt="PowerShell console or command prompt" class="wp-image-5076" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135957.653.png 1008w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135957.653-300x144.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T135957.653-768x369.png 768w" sizes="(max-width: 1008px) 100vw, 1008px" /><figcaption>PowerShell console or command prompt</figcaption></figure></div>
+
+
+
+<p>You can now capture whatever you need. If you do lower procmon&#8217;s <code>Altitude</code> to the lowest it can go, just be read for the event monsoon!</p>
+
+
+
+<h2><span class="ez-toc-section" id="Real-World_Examples"></span>Real-World Examples<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>You should now have a good understanding of what procmon can do and how it can help you track down Windows events. Let&#8217;s now apply that knowledge and cover a few common use cases where you might need this kind of know-how.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Finding_Whats_Deleting_a_File"></span>Finding What&#8217;s Deleting a File<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>If you got a file on your Windows machine that keeps getting removed for some unknown reason and want to track it down, procmon can help (and it&#8217;s pretty easy).</p>
+
+
+
+<p>Maybe you&#8217;ve opened up procmon and attempted to set an event file called <em>Delete</em> or <em>Remove</em> file but much to your dismay, no such operation exists. Instead, to find file removal events, you must filter for both the events with an <code>Operation</code> of:</p>
+
+
+
+<ul><li><code>SetDispositionInformationFile</code></li><li><code>SetDispositionInformationEx</code></li></ul>
+
+
+
+<p>If your system is removing a lot of files, you&#8217;ll also want to limit the file deletion events down to the file name or path using the <code>Path</code> filter too.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="bash" class="language-bash">Operation is          SetDispositionInformationEx   Include
+Operation is          SetDispositionInformationFile Include
+Path      begins with C:\MyFolder                   Include</code></pre>
+</div>
+
+
+<h3><span class="ez-toc-section" id="Tracking_Down_Locked_File_Issues"></span>Tracking Down Locked File Issues<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>We&#8217;ve all been there; you try to move or remove a file and it&#8217;s locked by some other process. Sometimes, if you&#8217;re trying to uninstall an application, for instance, you&#8217;ll never know if that random error you see has anything to do with a locked file in the first place!</p>
+
+
+
+<p>To figure out when Windows attempts to remove or modify a locked file, use the below filter set.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="bash" class="language-bash">Operation is CreateFile        Include
+Result    is SHARING VIOLATION Include</code></pre>
+</div>
+
+
+<h3><span class="ez-toc-section" id="Troubleshooting_Applications_that_Require_Admin_Rights"></span>Troubleshooting Applications that Require Admin Rights<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Are you working with an application that, according to the documentation, <em>should</em> work but doesn&#8217;t? We&#8217;ve all been there. Sometimes some process that application spawns requires elevated privileges but won&#8217;t tell you where or how. You can fire up procmon to help out.</p>
+
+
+
+<p>One way to track down processes getting denied because of required elevated permissions is to filter on the <strong>Result</strong> of an event.</p>
+
+
+
+<p>Whenever an event happens that gets denied due to lack of elevated rights, you&#8217;ll typically see a result of <code>ACCESS DENIED</code>. Knowing this, you can easily build a simple filter showing all events with a <strong>Result</strong> of <code>ACCESS DENIED</code> as shown below.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">Result is ACCESS DENIED Include</code></pre>
+</div>
+
+
+<p>From here, you add more filters like registry or folder path with the <strong>Path</strong> attribute too.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Finding_the_Process_Accessing_an_IP_Address"></span>Finding the Process Accessing an IP Address<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Maybe you&#8217;ve some odd network behavior with <a href="https://www.wireshark.org/" target="_blank" rel="noopener">Wireshark</a> and need to figure out what process is initiating that communication. Fire up procon and add the following set of filter rules.</p>
+
+
+
+<p>These filter rules limit events to only locally-initiated network traffic with a destination of a single IP address.</p>
+
+
+<div class="not-prose">
+<pre class="wp-block-code"><code lang="powershell" class="language-powershell">Operation   is       TCP Send        Include
+Operation   is       UDP Send        Include
+Path        contains -&gt;  Include
+Event Class is       Network         Include</code></pre>
+</div>
+
+
+<h3><span class="ez-toc-section" id="Troubleshooting_Slow_Boot_Up"></span>Troubleshooting Slow Boot Up<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Sometimes Windows is slow to boot up. That slowness can be caused by many different Windows components, installed applications, and so on. Using procmon&#8217;s boot logging capability, you can track down and fix the problem.</p>
+
+
+
+<ol><li>Enable boot-logging. You can find out how to do this in the <em>Capture Boot-Time Events</em> section above.</li></ol>
+
+
+
+<p>2. On the <strong>Enable Boot Logging</strong> dialog box, be sure to check the <strong>Generate thread profiling events</strong> checkbox. The <strong>Every second</strong> radio button should be good enough. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="716" height="336" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T140935.676.png" alt="Enabling thread profiling events on boot" class="wp-image-5079" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T140935.676.png 716w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T140935.676-300x141.png 300w" sizes="(max-width: 716px) 100vw, 716px" /><figcaption>Enabling thread profiling events on boot</figcaption></figure></div>
+
+
+
+<p>3. After a reboot, open up procmon, right-click on any column and choose <strong>Select Columns</strong>.</p>
+
+
+
+<p>4. On the <strong>Process Monitor Column Selection</strong> box, check <strong>Duration</strong>. Once you do this, you&#8217;ll be able to see how long each event took to execute. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="606" height="620" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141103.037.png" alt="Process Monitor Column" class="wp-image-5080" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141103.037.png 606w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141103.037-293x300.png 293w" sizes="(max-width: 606px) 100vw, 606px" /><figcaption>Process Monitor Column</figcaption></figure></div>
+
+
+
+<p>5. Now you can create a filter rule on <strong>Duration</strong> to a number of seconds you feel might be adequate. The below filter rule will only display events that took over five seconds to complete. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1004" height="326" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141157.128.png" alt="filter rule on Duration" class="wp-image-5081" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141157.128.png 1004w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141157.128-300x97.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141157.128-768x249.png 768w" sizes="(max-width: 1004px) 100vw, 1004px" /><figcaption>filter rule on Duration</figcaption></figure></div>
+
+
+
+<p>6. Finally, another useful way to investigate these slow events is by using procmon&#8217;s <strong>Process Tree</strong>. The <strong>Process Tree</strong> show relationships between parent and child processes and contains the start and end time on each process. To find it, click on <strong>Tools</strong> —&gt; <strong>Process Tree</strong>. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="506" height="218" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141243.923.png" alt="Process Tree" class="wp-image-5082" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141243.923.png 506w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141243.923-300x129.png 300w" sizes="(max-width: 506px) 100vw, 506px" /><figcaption>Process Tree</figcaption></figure></div>
+
+
+
+<p>7. Once in the <strong>Process Tree</strong>, now take a look at the <strong>Life Time</strong> column that shows in a graphical format the length of time each process took. You can also notice time spans by comparing the <strong>Start Time</strong> and <strong>End Time</strong> columns in this view. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="1596" height="1196" src="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141424.840.png" alt="Lifetime Column" class="wp-image-5085" srcset="https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141424.840.png 1596w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141424.840-300x225.png 300w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141424.840-1024x767.png 1024w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141424.840-768x576.png 768w, https://adamtheautomator.com/wp-content/uploads/2020/12/Untitled-2020-12-12T141424.840-1536x1151.png 1536w" sizes="(max-width: 1596px) 100vw, 1596px" /><figcaption>Lifetime Column</figcaption></figure></div>
+
+
+
+<h3><span class="ez-toc-section" id="Troubleshooting_App-V_Applications"></span>Troubleshooting App-V Applications<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Many organizations use <a href="https://docs.microsoft.com/en-us/windows/application-management/app-v/appv-getting-started" target="_blank" rel="noopener">Microsoft&#8217;s App-V service</a> to virtualize and deploy applications to end-users. If you do use App-V, there&#8217;s a handy (and undocumented) procmon switch you need to know about called <code>/externalcapture</code>.</p>
+
+
+
+<p>Using <code>.\procmon.exe /ExternalCapture</code> tends to capture more registry activity around App-V applications. Try out this switch if you can&#8217;t find what you&#8217;re looking for when troubleshooting App-V applications!</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em><em>The /HookRegistry switch supposedly serves the same purpose as /ExternalCapture but it no longer works on 64-bit machines.</em></em></p></blockquote>
+
+
+
+<h2><span class="ez-toc-section" id="Wrap_Up"></span>Wrap Up<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>Well there you have it; an extensive guide on everything procmon! Although you&#8217;ve learned a lot about procmon, there&#8217;s always more gems to uncover with this handy utility.</p>
+
+
+
+<p>If you&#8217;d like to suggest any updates or changes to this Ultimate Guide, please reach out to me <a href="mailto:abhilash.panicker@outlook.com" target="_blank" rel="noopener">on Email</a> and let me know!</p>
+      </div>
+
+
+    <div class="flex flex-col mb-8 lg:mb-0 min-w-[25%]"></div>
+    <div class="flex flex-col min-w-[25%]"></div>
+</div>
+<div class="w-full pl-2 pr-2 2xl:pl-0 2xl:pr-0 copyright bg-slate-700 dark:bg-slate-800">
+    <div class="w-full pt-2 pb-2 m-auto text-sm text-center max-w-screen-2xl text-slate-200 dark:text-slate-300 lg:text-left">
+        Copyright 2022&copy; Abhilash Panicker 
+    </div>
+</div></footer><!-- /footer -->
+
+
+</body>
+</html>
