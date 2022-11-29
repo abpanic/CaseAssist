@@ -16,8 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\abpanick\Documents\GitHub\MyWebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/BugTrack.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVnVHJhY2suY3NodG1s
+[C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/BugTracker.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVnVHJhY2tlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/abpanick/Documents/GitHub/MyWebApp/Pages/CaseTransfer.cshtml]
