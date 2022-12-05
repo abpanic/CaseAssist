@@ -60,3 +60,4 @@ C:\Users\abpanick\Documents\GitHub\MyWebApp\obj\Debug\net7.0\refint\MyWebApp.dll
 C:\Users\abpanick\Documents\GitHub\MyWebApp\obj\Debug\net7.0\MyWebApp.pdb
 C:\Users\abpanick\Documents\GitHub\MyWebApp\obj\Debug\net7.0\MyWebApp.genruntimeconfig.cache
 C:\Users\abpanick\Documents\GitHub\MyWebApp\obj\Debug\net7.0\ref\MyWebApp.dll
+C:\Users\abpanick\Documents\GitHub\MyWebApp\bin\Debug\net7.0\Pages\Microsoft Power Platform Solutions _ Power Apps_files\count.json
