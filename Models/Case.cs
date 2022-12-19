@@ -7,7 +7,7 @@ public class SR
     
     public int Id {get; set;}
     [Required]   
-    public Guid number {get; set;}
+    public int number {get; set;}
     [Required]            
     public string Issue {get;set;}
     public bool IsFQRdone {get;set;}        
