@@ -9,7 +9,7 @@ public class SR
     [Required]   
     public int number {get; set;}
     [Required]            
-    public string Issue {get;set;}
+    public string? Issue {get;set;}
     public bool IsFQRdone {get;set;}        
     public POD POD {get;set;}
     public IsSME IsSMEReviewed {get;set;}

@@ -79,8 +79,8 @@ app.MapPost("/v1/SRs", (SRDto createSR, AppDbContext context) =>
     {
         var post = new SR()
         {
-            //Id = createSR.Id(),
-            number = Guid.NewGuid(),
+            Id = createSR.Id(),
+            number = createSR.number(),
             Issue = createSR.Issue,
             IsFQRdone = createSR.IsFQRdone,
             POD = createSR.POD,
