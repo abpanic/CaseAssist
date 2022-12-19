@@ -5,7 +5,7 @@ namespace RazorPagesCase.Models;
 public class SR
 {
     
-    //public int Id {get; set;}
+    public int Id {get; set;}
     [Required]   
     public Guid number {get; set;}
     [Required]            
