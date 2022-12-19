@@ -1,0 +1,88 @@
+// behavior for ibmc-megamenu
+
+jQuery("#ibmc-mega-mainmenu li").hover(function(){
+  var myli = this;
+ window.megatimeout = setTimeout(function(){
+   console.info(myli);
+   var theMenuID = jQuery( myli ).attr("data-menu");
+   jQuery(".ibmc-mega-extra").hide();
+   jQuery("#"+theMenuID).show();
+ }, 250);
+ }, function(){
+   clearTimeout(window.megatimeout);
+});
+
+jQuery(document).on('touchstart', function (e) {
+	  if (!jQuery("#ibmc-megamenu").is(e.target) && jQuery("#ibmc-megamenu").has(e.target).length === 0) {
+	    jQuery("#ibmc-mega-mainmenu").hide();
+	  }
+	});
+
+jQuery(document).mouseup(function(e) {
+  if (!jQuery("#ibmc-megamenu").is(e.target) && jQuery("#ibmc-megamenu").has(e.target).length === 0) {
+    jQuery("#ibmc-mega-mainmenu").hide();
+  }
+});
+
+
+
+jQuery("#ibmc-main-anchor").hover(function(){
+    jQuery(this).attr("href", "https://www.ibm.com/community");
+});
+
+jQuery("#ibmc-main-anchor").dblclick(function(){
+    jQuery("#ibmc-main-anchor").attr("href", "https://www.ibm.com/community");
+});
+
+
+/*
+By Osvaldas Valutis, www.osvaldas.info
+Available for use under the MIT License
+*/
+
+/*
+;(function( $, window, document, undefined )
+{
+$.fn.doubleTapToGo = function( params )
+{
+	if( !( 'ontouchstart' in window ) &&
+		!navigator.msMaxTouchPoints &&
+		!navigator.userAgent.toLowerCase().match( /windows phone os 7/i ) ) return false;
+
+	this.each( function()
+	{
+		var curItem = false;
+
+		jQuery( this ).on( 'click', function( e )
+		{
+			var item = jQuery( this );
+			if( item[ 0 ] != curItem[ 0 ] )
+			{
+				e.preventDefault();
+				curItem = item;
+			}
+		});
+
+		jQuery( document ).on( 'click touchstart MSPointerDown', function( e )
+		{
+			var resetItem = true,
+				parents	  = jQuery( e.target ).parents();
+
+			for( var i = 0; i < parents.length; i++ )
+				if( parents[ i ] == curItem[ 0 ] )
+					resetItem = false;
+
+			if( resetItem )
+				curItem = false;
+		});
+	});
+	return this;
+};
+})( jQuery, window, document );
+
+jQuery( function()
+		{
+			jQuery( '#ibmc-megamenu-parent' ).doubleTapToGo();
+		});
+
+*/

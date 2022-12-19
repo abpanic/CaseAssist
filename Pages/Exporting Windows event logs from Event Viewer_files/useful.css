@@ -1,0 +1,81 @@
+.votingapi-widgets.useful .useful-rating a {
+  border: none !important;
+  margin-right: .5em;
+  display: inline-block;
+}
+
+.votingapi-widgets.useful .useful-rating a.disabled {
+  opacity: 0.5;
+}
+
+form#vote-form span.select2 {
+    display: none;
+}
+
+.useful-rating {
+  display: flex;
+}
+
+.ibm-margin-right-1 {
+    margin-right: 1rem;
+}
+
+.like_dislike .like button,
+.like_dislike .dislike button {
+  max-width: 6rem;
+  min-width: 6rem;
+}
+
+.like_dislike .like,
+.like_dislike .dislike {
+  text-align: center;
+}
+.like_dislike .like span,
+.like_dislike .dislike span {
+  float: right;
+  padding-right: 10px;
+}
+
+.like_dislike {
+  display: inline-block;
+}
+
+.like_dislike .like,
+.like_dislike .dislike {
+  float: left;
+}
+
+@media only screen  and (max-width: 1055px){
+  .like_dislike .like button, .like_dislike .dislike button {
+      max-width: unset;
+      min-width: unset;
+      width: 55px;
+      height: 35px;
+      padding: 0;
+  }
+  span.text-yes {
+      display: none;
+  }
+  span.text-no {
+      display: none;
+  }
+}
+
+@media only screen  and (max-width: 500px){
+/*#ibm-document-information .ibm-card__content, #ibm-document-information .ibm-card__heading {
+    padding-left: 20px;
+    padding-top: 20px;
+}*/
+  .like_dislike .like button, .like_dislike .dislike button {
+      max-width: 6rem;
+      min-width: 6rem;
+  }
+  span.text-yes {
+      display: block;
+      margin-left: 10px;
+  }
+  span.text-no {
+      display: block;
+      margin-left: 10px;
+  }
+}

@@ -1,0 +1,86 @@
+/**
+ * @file
+ * Attaches is useful rating.
+ */
+
+(function ($, Drupal) {
+  Drupal.behaviors.usefulRating = {
+    attach: function (context, settings) {
+     $('body').find('.useful').each(function () {
+       var $this = $(this);
+       $(this).find('select').once('processed').each(function () {
+         var markup = 'Submissions are limited to one per day per topic.';
+         $this.find('[type=submit]').hide();
+         var $select = $(this);
+         var isPreview = $select.data('is-edit');
+         $select.after('<div class="useful-rating" role="complementary" aria-label="Was this topic helpful?"><div class="like"><a href="#"><button aria-label="Yes" tabindex="0" class="ibm-margin-right-1 bx--btn bx--btn--sm bx--btn--tertiary" type="button"><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 32 32" class="bx--btn__icon"><path d="M26,12H20V6a3.0033,3.0033,0,0,0-3-3H14.8672a2.0094,2.0094,0,0,0-1.98,1.7173l-.8453,5.9165L8.4648,16H2V30H23a7.0078,7.0078,0,0,0,7-7V16A4.0045,4.0045,0,0,0,26,12ZM8,28H4V18H8Zm20-5a5.0057,5.0057,0,0,1-5,5H10V17.3027l3.9578-5.9365L14.8672,5H17a1.0008,1.0008,0,0,1,1,1v8h8a2.0025,2.0025,0,0,1,2,2Z"></path></svg><span class="text-yes">Yes</span><span id="like" style="display:none;">999</span></button></a></div><div class="dislike"><a href="#"><button aria-label="No" tabindex="0" class="bx--btn bx--btn--sm bx--btn--tertiary" type="button"><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 32 32" class="bx--btn__icon"><path d="M30,16V9a7.0078,7.0078,0,0,0-7-7H2V16H8.4648l3.5774,5.3662.8453,5.9165A2.0094,2.0094,0,0,0,14.8672,29H17a3.0033,3.0033,0,0,0,3-3V20h6A4.0045,4.0045,0,0,0,30,16ZM8,14H4V4H8Zm20,2a2.0025,2.0025,0,0,1-2,2H18v8a1.0008,1.0008,0,0,1-1,1H14.8672l-.9094-6.3662L10,14.6973V4H23a5.0057,5.0057,0,0,1,5,5Z"></path></svg><span class="text-no">No</span><span id="dislike" style="display:none;">No</span></button></a></div></div>').hide();
+         $this.find('.useful-rating a').eq(1).each(function () {
+           $(this).bind('click',function (e) {
+             if (isPreview || $('.vote-form>div').hasClass('form-disabled')) {
+               voteDialogPopup(markup);
+               return;
+             }
+             e.preventDefault();
+             $select.get(0).selectedIndex = 0;
+             $this.find('[type=submit]').trigger('click');
+             $this.find('a').addClass('disabled');
+             $this.find('.vote-result').html();
+             $('.votingapi-widgets').attr('data-vote','-1');
+             $('#ibm-drupal-feedback').trigger('click');
+             var checkExist = setInterval(function() {
+              if ($('.ui-widget-content').length) {
+                  feedback.pageFeedbackLayoutHandler();
+                  feedback.charactersRemaining('drupal-modal', 'drupalFeedbackCommentCharactersRemaining', 1000);
+                  utility.makeModalDraggable();
+                 clearInterval(checkExist);
+              }
+             }, 100);
+           })
+         })
+         $this.find('.useful-rating a').eq(0).each(function () {
+           $(this).bind('click',function (e) {
+             if (isPreview || $('.vote-form>div').hasClass('form-disabled')) {
+               voteDialogPopup(markup);
+               return;
+             }
+             e.preventDefault();
+             $select.get(0).selectedIndex = 1;
+             $this.find('[type=submit]').trigger('click');
+             $this.find('a').addClass('disabled');
+             $this.find('.vote-result').html();
+             $('.votingapi-widgets').attr('data-vote','1');
+             $('#ibm-drupal-feedback').trigger('click');
+             var checkExist = setInterval(function() {
+              if ($('.ui-widget-content').length) {
+                  feedback.pageFeedbackLayoutHandler();
+                  feedback.charactersRemaining('drupal-modal', 'drupalFeedbackCommentCharactersRemaining', 1000);
+                  utility.makeModalDraggable();
+                 clearInterval(checkExist);
+              }
+             }, 100);
+           })
+         })
+       })
+     });
+    }
+  };
+})(jQuery, Drupal);
+
+function voteDialogPopup(markup) {
+    jQuery('<p></p>').dialog({
+        title: "Thank you for your submission",
+        modal: true,
+        closeOnEscape: false,
+        width: 500,
+        open: function () {
+            jQuery(this).html(markup);
+            jQuery(".ui-dialog-titlebar-close").hide();
+        },
+        buttons: {
+            "OK" : function (){
+                jQuery(this).dialog("close");
+            }
+
+        }
+    });
+}
