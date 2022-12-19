@@ -28,9 +28,9 @@ public static class TransferService
         SRs.Add(SR);
     }
 
-    public static void Delete(int Id)
+    public static void Delete(int id)
     {
-        var SR=Get(Id);
+        var SR=Get(id);
         if (SR is null)
             return;
         
