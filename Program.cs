@@ -1,4 +1,4 @@
-using RazorPizzeria.Data;
+#using RazorPizzeria.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
