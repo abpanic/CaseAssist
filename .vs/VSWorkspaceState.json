@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github\\workflows",
-    "\\Data"
+    "\\Pages"
   ],
-  "SelectedNode": "\\Program.cs",
+  "SelectedNode": "\\Pages\\Learning.cshtml",
   "PreviewInSolutionExplorer": false
 }
