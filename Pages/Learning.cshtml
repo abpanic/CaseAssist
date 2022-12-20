@@ -2,128 +2,191 @@
 @model ReadinessModel
 @{
     ViewData["Title"]="Learning Path";
-    
+
 }
 
 <style>
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 5px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 5px;
+    body{
+  padding:50px;
+  background:#fff;
 }
-
-.active, .collapsible:hover {
-  background-color: #555;
+.wrapper{
+  width:70%;
 }
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
+@media(max-width:992px){
+ .wrapper{
+  width:100%;
+}
+}
+.panel-heading {
+  padding: 0;
+	border:0;
+}
+.panel-title>a, .panel-title>a:active{
+	display:block;
+	padding:15px;
+  color:#555;
+  font-size:16px;
+  font-weight:bold;
+	text-transform:uppercase;
+	letter-spacing:1px;
+  word-spacing:3px;
+	text-decoration:none;
+}
+.panel-heading  a:before {
+   font-family: 'Glyphicons Halflings';
+   content: "\e114";
+   float: right;
+   transition: all 0.5s;
+}
+.panel-heading.active a:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 </style>
 
-<button class="collapsible"><h4>Intro to Basic</h4></button>
-<div class= "content">
-    <ul class="box1">
-        <li><a href='https://learn.microsoft.com/en-us/training/modules/get-started-with-powerapps/'>Get started with Power Apps canvas apps</li></a> 
-        <li><a href="https://learn.microsoft.com/en-us/training/paths/create-app-models-business-processes/">Create Model driven app in PowerApps:</li></a>
-        <li><a href='https://learn.microsoft.com/en-us/training/modules/get-started-flows/'>Get Started with Power Automate Flows</li></a>
-        <li><a href='https://cloudacademy.com/learning-paths/javascript-for-beginners-3823/'>Javascript for Beginners</li></a>
-        <li><a href='https://cloudacademy.com/learning-paths/javascript-primer-1384/'>Applied Javascript</li></a>
-    </ul>
+
+<div class="wrapper center-block">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading active" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Intro to Basic
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <ol>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/get-started-with-powerapps/'>Get started with Power Apps canvas apps</li></a>
+                        <li><a href="https://learn.microsoft.com/en-us/training/paths/create-app-models-business-processes/">Create Model driven app in PowerApps:</li></a>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/get-started-flows/'>Get Started with Power Automate Flows</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/javascript-for-beginners-3823/'>Javascript for Beginners</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/javascript-primer-1384/'>Applied Javascript</li></a>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Integration
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <ol>
+                        <li><a href='https://learn.microsoft.com/en-us/training/paths/integrate-power-platform/'>Integrate with Microsoft Power Platform and Dataverse</li></a>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/multiple-data-sources/'>Power Automate's deep integration across multiple data sources</li></a>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/integrations/'>Implement integrations with Power Platform</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/d365-ce-azure-data-factory-integrations-1854-4183/'>Azure Data Factory</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/d365-ce-dataverse-connector-1854-3822/'>Dataverse Connector</li></a>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Solutions
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <ol>
+                        <h5>Learning Path</h5>
+                        <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-solutions-curriculum-1854-1889/'>Solutions Import/Export</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/d365-ce-form-alm-1854-4283/'>ALM with Microsoft Power Platform</li></a>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/data-modeling/'>Model data for Power Platform solutions</li></a>
+                        <h5>Videos</h5>
+                        <li><a href='https://www.youtube.com/watch?v=HS7Dw1cCw14'>Solutions Concept & Demo in Dataverse or Dynamics 365 | Export, Import, Clone, Patch, Publish</li></a>
+                        <li><a href='https://www.youtube.com/watch?v=1SXmIjV2g2o'>Best Practices for Microsoft Dynamics 365 Solution Management & Patch Deployment</li></a>
+                        <li><a href='https://youtu.be/bAootc3AF4Y'>Using Power Apps Solution Packager and Publishers to Move Apps to New Environments</li></a>
+                        <li><a href='https://www.youtube.com/watch?v=CgY7n60-jKc'>Dynamics 365 Solution Export & Import as Managed Using Azure DevOps Build Pipeline</li></a>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Ribbon and Commanding tools
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                <div class="panel-body">
+                    <ol>
+                        <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-web-resources-curriculum-1854-2095/'>Web Resources</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-client-scripting-curriculum-1854-2094/'>ClientSide Scripting</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-ribbons-curriculum-1854-2114/'>Ribbon Modifications</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/d365-ce-modern-commanding-preview-1854-4019/'>Modern Commanding</li></a>
+                        <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-model-driven-app-ui-curriculum-1854-2352/'>SiteMap Modifications</li></a>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Advanced
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body">
+                    <ol>
+                        <li><a href="https://learn.microsoft.com/en-us/training/paths/use-power-apps-component-framework/">Create components with Power Apps Component Framework</a></li>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/power-platform-architecture/'>Explore Power Platform architecture</a></li>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/power-automate-architecture/'>Explore Power Automate architecture</a></li>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/application-lifecycle-management-architect/'>Plan application lifecycle management for Power Platform</a></li>
+                        <li><a href='https://learn.microsoft.com/en-us/training/modules/project-test-process/'>Testing and go-live</li></a>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<button class="collapsible"><h4>Integration</h4></button>
-<div class= "content">
-<ul>  
-    <li><a href='https://learn.microsoft.com/en-us/training/paths/integrate-power-platform/'>Integrate with Microsoft Power Platform and Dataverse</li></a>
-    <li><a href='https://learn.microsoft.com/en-us/training/modules/multiple-data-sources/'>Power Automate's deep integration across multiple data sources</li></a>
-    <li><a href='https://learn.microsoft.com/en-us/training/modules/integrations/'>Implement integrations with Power Platform</li></a>
-    <li><a href='https://cloudacademy.com/learning-paths/d365-ce-azure-data-factory-integrations-1854-4183/'>Azure Data Factory</li></a>
-    <li><a href='https://cloudacademy.com/learning-paths/d365-ce-dataverse-connector-1854-3822/'>Dataverse Connector</li></a>
-</ul>
-</div>
-<button class="collapsible"><h4>Solutions</h4></button>
-<div class= "content">
-<ul>
-    <h5>Learning Path</h5>
-    <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-solutions-curriculum-1854-1889/'>Solutions Import/Export</li></a>
-    <li><a href='https://cloudacademy.com/learning-paths/d365-ce-form-alm-1854-4283/'>ALM with Microsoft Power Platform</li></a>
-    <li><a href='https://learn.microsoft.com/en-us/training/modules/data-modeling/'>Model data for Power Platform solutions</li></a>
-    <h5>Videos</h5>
-    <li><a href='https://www.youtube.com/watch?v=HS7Dw1cCw14'>Solutions Concept & Demo in Dataverse or Dynamics 365 | Export, Import, Clone, Patch, Publish</li></a>
-    <li><a href='https://www.youtube.com/watch?v=1SXmIjV2g2o'>Best Practices for Microsoft Dynamics 365 Solution Management & Patch Deployment</li></a>
-    <li><a href='https://youtu.be/bAootc3AF4Y'>Using Power Apps Solution Packager and Publishers to Move Apps to New Environments</li></a>
-    <li><a href='https://www.youtube.com/watch?v=CgY7n60-jKc'>Dynamics 365 Solution Export & Import as Managed Using Azure DevOps Build Pipeline</li></a>
-</ul>
-</div>
-<button class="collapsible"><h4>Ribbon and Commanding tools</h4></button>
-<div class= "content">
-<ul>
-    <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-web-resources-curriculum-1854-2095/'>Web Resources</li></a>
-    <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-client-scripting-curriculum-1854-2094/'>ClientSide Scripting</li></a>
-    <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-ribbons-curriculum-1854-2114/'>Ribbon Modifications</li></a>
-    <li><a href='https://cloudacademy.com/learning-paths/d365-ce-modern-commanding-preview-1854-4019/'>Modern Commanding</li></a>
-    <li><a href='https://cloudacademy.com/learning-paths/dynamics-365-ce-model-driven-app-ui-curriculum-1854-2352/'>SiteMap Modifications</li></a>
-</ul>
-</div>
-<button class="collapsible"><h4>Advanced</h4></button>
-<div class= "content">
-<ul>
-    <li><a href="https://learn.microsoft.com/en-us/training/paths/use-power-apps-component-framework/">Create components with Power Apps Component Framework</a></li>   
-    <li><a href='https://learn.microsoft.com/en-us/training/modules/power-platform-architecture/'>Explore Power Platform architecture</a></li>
-    <li><a href='https://learn.microsoft.com/en-us/training/modules/power-automate-architecture/'>Explore Power Automate architecture</a></li> 
-    <li><a href='https://learn.microsoft.com/en-us/training/modules/application-lifecycle-management-architect/'>Plan application lifecycle management for Power Platform</a></li>
-    <li><a href='https://learn.microsoft.com/en-us/training/modules/project-test-process/'>Testing and go-live</li></a>
-</ul>
-</div>
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
+                <script>
+                    $('.panel-collapse').on('show.bs.collapse', function () {
+                        $(this).siblings('.panel-heading').addClass('active');
+                    });
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
-}
-</script>
-<!--
-  
+                    $('.panel-collapse').on('hide.bs.collapse', function () {
+                        $(this).siblings('.panel-heading').removeClass('active');
+                    });
+                </script>
+                <!--
 
 
 
 
 
-How to use Package Deployment tool to deploy Solutions & Configuration data ?
-https://youtu.be/nebO5ldJWcM?list=PLwhleHnDZ_IYbiEozW42YFlSfj8bBaKLs
+
+        How to use Package Deployment tool to deploy Solutions & Configuration data ?
+        https://youtu.be/nebO5ldJWcM?list=PLwhleHnDZ_IYbiEozW42YFlSfj8bBaKLs
 
 
-Dataverse Solution to Source Control
-https://youtu.be/KUGKjGMQwp4
+        Dataverse Solution to Source Control
+        https://youtu.be/KUGKjGMQwp4
 
-Web-Resource
--=-=-=-=-=-=-=-=-=-=-=-
-What is Web Resource | How to use JavaScript | How to use JavaScript function |
-https://youtu.be/URC_Le3auMg?list=PLwhleHnDZ_IYbiEozW42YFlSfj8bBaKLs
+        Web-Resource
+        -=-=-=-=-=-=-=-=-=-=-=-
+        What is Web Resource | How to use JavaScript | How to use JavaScript function |
+        https://youtu.be/URC_Le3auMg?list=PLwhleHnDZ_IYbiEozW42YFlSfj8bBaKLs
 
-Web Resource | INFO, WARNING, ERROR Notification | Confirm, Alert Dialog |
-https://youtu.be/URQDipbobwo?list=PLwhleHnDZ_IYbiEozW42YFlSfj8bBaKLs
+        Web Resource | INFO, WARNING, ERROR Notification | Confirm, Alert Dialog |
+        https://youtu.be/URQDipbobwo?list=PLwhleHnDZ_IYbiEozW42YFlSfj8bBaKLs
 
-Alternate keys
--=-=-=-=-=-=-=-=-=-=-=-=-=-
-Easier Imports With Data verse Alternate Keys
-https://youtu.be/m35K6-qlCo4-->
+        Alternate keys
+        -=-=-=-=-=-=-=-=-=-=-=-=-=-
+        Easier Imports With Data verse Alternate Keys
+        https://youtu.be/m35K6-qlCo4-->

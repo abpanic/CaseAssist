@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Models",
-    "\\Services"
+    "\\.github",
+    "\\.github\\workflows"
   ],
-  "SelectedNode": "\\Services\\CaseTransfer.cs",
+  "SelectedNode": "\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
