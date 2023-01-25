@@ -1,10 +1,10 @@
 # MyWebApp
-This is the web app provisioning to https://msftcasehandling.azurewebsites.net/
+Provisioning to https://msftcasehandling.azurewebsites.net/
 
-Purpose of this web App is to ensure that the Engineers can have access to everything in one place.
+Purpose of this web App is to ensure that the User have access to everything in one place.
 
 Upcoming Changes:
--Hide the SR
--Include Search
--MySQL should be used for data storing
--All pages to have shared Layout
+-moving blogs to https://dbugr.netlify.app/
+-moving tutorials from webdevtutorials101.netlify.app to the tutorials section
+-adding SQL and C# tutorials
+
